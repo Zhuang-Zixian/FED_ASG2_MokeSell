@@ -1,0 +1,44 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+    height: 110px;
+    width: auto;
+}
+
+/* Signup Form */
+.form-container {
+    max-width: 500px;
+}
+
+/* DuckDuckGo ChatBot CSS */
+/* Chat Container */
+.chat-container {
+    z-index: 1000;
+}
+
+/* Chat Button */
+.chat-button {
+    width: 60px;
+    height: 60px;
+}
+
+.chat-button i {
+    font-size: 1.5rem;
+}
+
+/* Chat Box */
+.chat-box {
+    width: 300px;
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+}
+
+.messages {
+    height: 200px;
+    overflow-y: auto;
+}
+/* End of DuckDuckGo ChatBot CSS */
