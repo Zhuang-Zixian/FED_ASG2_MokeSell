@@ -18,7 +18,15 @@ Click here to visit the website hosted on github: [Here](https://zhuang-zixian.g
    ```
 
 ### Run the development server:
-3. Start the Vite development server locally:
+3. Start the CORS local proxy server to securely send data to RestDB:
+   ```bash
+   node cors-server.js
+   ```
+   
+   Ensure you see something like this: CORS Proxy server is running on http://localhost:5000
+
+### Run the development server:
+4. Start the Vite development server locally:
    ```bash
    npm run dev
    ```
