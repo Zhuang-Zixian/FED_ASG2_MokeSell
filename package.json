@@ -1,5 +1,31 @@
 {
+  "name": "fed_asg2_mokesell",
+  "version": "1.0.0",
+  "description": "By: Aidan & Zixian",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhuang-Zixian/FED_ASG2_MokeSell.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zhuang-Zixian/FED_ASG2_MokeSell/issues"
+  },
+  "homepage": "https://github.com/Zhuang-Zixian/FED_ASG2_MokeSell#readme",
+  "devDependencies": {
+    "vite": "^6.0.7"
+  },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
   }
 }
