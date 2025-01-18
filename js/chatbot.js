@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const chatButton = document.getElementById("chat-button");
+    const chatButton = document.getElementById("chat-button"); // Button to open the ChatBot
     const chatBox = document.getElementById("chat-box");
     const closeChat = document.getElementById("close-chat");
     const sendBtn = document.getElementById("send-btn");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         chatBox.classList.add("d-none");
     });
 
-    // Append Messages to Chat Box
+    // Appending Messages to Chat Box
     function appendMessage(sender, message) {
         const messageDiv = document.createElement("div");
         messageDiv.classList.add("mb-2");
@@ -44,7 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Handle Sending Message
-    async function sendMessage() {
+    async function sendMessage(event) {
+        event.preventDefault(); // Prevent form submission or default button action
+
         const userMessage = chatInput.value.trim();
         if (!userMessage) return;
 
@@ -62,11 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle Send Button Click
     sendBtn.addEventListener("click", sendMessage);
 
+    // This allows the user to either press enter key on the keyboard or the send button to make a API request to DuckDuckGo
     // Handle Enter Key Press in Chat Input
     chatInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            event.preventDefault(); // Prevent default behavior of Enter key (e.g., form submission)
-            sendMessage();
+            event.preventDefault(); // Prevent default behavior of Enter key
+            sendMessage(event);
         }
     });
 });

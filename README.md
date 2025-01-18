@@ -11,4 +11,19 @@ Click here to visit the website hosted on github: [Here](https://zhuang-zixian.g
    git clone https://github.com/Zhuang-Zixian/FED_ASG2_MokeSell.git
    ```
 
+### Install dependencies:
+2. Ensure you have [Node.js](https://nodejs.org/) installed. Then run:
+   ```bash
+   npm install
+   ```
+
+### Run the development server:
+3. Start the Vite development server locally:
+   ```bash
+   npm run dev
+   ```
+
+### Access the application:
+Once the development server starts, Vite will display a local server URL (e.g., `http://localhost:5173`). Open the link in your web browser to view the application.
+
 ---
