@@ -16,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Proxy POST request to RestDB
+// Proxy POST request to RestDB rest/accounts collection
 app.post('/rest/accounts', async (req, res) => {
     try {
         console.log('Incoming request body:', req.body); // Log the request body
@@ -43,6 +43,35 @@ app.post('/rest/accounts', async (req, res) => {
         res.json(data); // Send the response from RestDB back to the client
     } catch (error) {
         console.error('Error from proxy server:', error.message); // Logging proxy server errors
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+});
+
+// Proxy GET request to RestDB to rest/accounts collection
+app.get('/rest/accounts', async (req, res) => {
+    try {
+        console.log('Incoming query:', req.query.q); // Log the query received
+
+        const query = req.query.q ? `?q=${encodeURIComponent(req.query.q)}` : '';
+        const response = await fetch(`https://mokesell-6d16.restdb.io/rest/accounts${query}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': '678a2a8729bb6d839ec56bd4', // API key
+            },
+        });
+
+        const data = await response.json();
+        console.log('RestDB response:', data); // Log the response
+
+        if (!response.ok) {
+            console.error('Error from RestDB:', data);
+            return res.status(response.status).json(data);
+        }
+
+        res.json(data);
+    } catch (error) {
+        console.error('Error in GET proxy:', error.message);
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 });
