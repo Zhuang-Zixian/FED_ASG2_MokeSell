@@ -4,6 +4,12 @@
 const express = require('express'); // Node.js framework
 const cors = require('cors'); // middleware to handle CORS
 const bodyParser = require('body-parser'); // parses json req
+const session = require('express-session'); // add express sessions for session cookies
+const crypto = require('crypto'); // For generating secure random secrets
+
+// To generate random 10 character string for sessions secret
+const SESSION_SECRET = crypto.randomBytes(10).toString('hex'); // using Node.js crypto module to generate secrets
+console.log('Generated Session Secret:', SESSION_SECRET);
 
 // Creating an instance of Express App
 // Express App is a lightweight Node.js framework that acts as the main object
@@ -13,8 +19,27 @@ const bodyParser = require('body-parser'); // parses json req
 const app = express();
 
 // Middleware to enable CORS for all routes
-app.use(cors());
+app.use(
+    cors({
+        origin: ['http://localhost:5173', 'https://zhuang-zixian.github.io/FED_ASG2_MokeSell/'], // Allowed origins
+        credentials: true, // Allow credentials (session cookies)
+    })
+);
 app.use(bodyParser.json());
+
+// Configure express-session middleware for implementing Session Cookies
+app.use(
+    session({
+        secret: SESSION_SECRET, // Replace with a Hardcoded key
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: false, // Set to true if using HTTPS only in production for example github pages
+            httpOnly: true,
+            maxAge: 1000 * 60 * 30, // 30 minutes
+        },
+    })
+);
 
 // Proxy POST request to RestDB rest/accounts collection
 app.post('/rest/accounts', async (req, res) => {
@@ -69,10 +94,45 @@ app.get('/rest/accounts', async (req, res) => {
             return res.status(response.status).json(data);
         }
 
+        // Save user data in session on successful login as session cookies
+        if (data.length > 0) {
+            req.session.user = {
+                id: data[0]._id,
+                username: data[0].username,
+                email: data[0].useremail,
+            };
+            console.log('Session created:', req.session.user);
+        }
+
         res.json(data);
     } catch (error) {
         console.error('Error in GET proxy:', error.message);
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+});
+
+// Logout route to destroy session for the user and clear the session cookie
+app.post('/logout', (req, res) => {
+    if (req.session) {
+        // Destroy the session
+        req.session.destroy((err) => {
+            if (err) {
+                console.error('Error destroying session:', err);
+                return res.status(500).json({ message: 'Failed to log out.' });
+            }
+
+            // Clear the session cookie
+            res.clearCookie('connect.sid', {
+                path: '/',
+                httpOnly: true,
+                secure: false, // Set to true if using HTTPS in production
+            });
+
+            // Respond to the client
+            res.json({ message: 'You have been logged out successfully.' });
+        });
+    } else {
+        res.status(400).json({ message: 'No active session to log out.' });
     }
 });
 
