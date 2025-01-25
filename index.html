@@ -29,6 +29,19 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5HBCMZQ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Lottie Animation Loader -->
+    <div id="loader-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player 
+            src="https://lottie.host/e012ad42-3f38-4645-be1d-c4f4b1f5fc21/Ex0KvPcBvx.lottie" 
+            background="transparent" 
+            speed="1" 
+            style="width: 300px; height: 300px" 
+            loop 
+            autoplay>
+        </dotlottie-player>
+    </div>
     
     <!-- Navigation Bar -->
     <!-- Dismissible Promotion Banner -->
@@ -43,11 +56,14 @@
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-                <img src="images/mokesell_logo_blue.png" class="img-fluid logo" alt="MokeSell Logo"> <!-- Adjusted logo size -->
+                <img src="images/mokesell_logo_blue.png" class="img-fluid logo" alt="MokeSell Logo"> 
             </a>
 
             <!-- Right-Aligned Icons (Mobile Only) -->
             <ul class="navbar-nav d-lg-none d-flex flex-row align-items-center ms-auto">
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-white" href="#"><i class="bi bi-person"></i></a>
+                </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
                 </li>
@@ -94,8 +110,18 @@
 
                 <!-- Icons (Desktop Only) -->
                 <ul class="navbar-nav d-none d-lg-flex align-items-center">
-                    <li class="nav-item mx-3 d-flex align-items-center text-white">
-                        <i class="bi bi-person me-2"></i> <span>Hello, user</span>
+
+                    <!-- User Menu Item -->
+                    <li class="nav-item dropdown mx-3 d-flex align-items-center text-white">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false" id="userDisplay">
+                            <i class="bi bi-person me-2"></i> <span>Hello, User</span>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <ul class="dropdown-menu dropdown-menu-start" id="userDropdownContent">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Signup</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item mx-3">
                         <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
@@ -127,9 +153,7 @@
     
     <!-- Main Image Carousel -->
     <main>
-        <!-- User Logout Button-->
-        <button id="logout-btn" class="btn btn-primary">Logout</button>
-
+        <!-- Placeholder for future code additions -->
     </main>
     <!-- End of Main Image Carousel -->
 
@@ -168,6 +192,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- For API key and connecting to JS files -->
+     <script src="js/index.js"></script>
      <script src="js/config.js"></script>
      <script src="js/chatbot.js"></script>
 </body>

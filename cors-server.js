@@ -28,9 +28,11 @@ app.use(
 app.use(bodyParser.json());
 
 // Configure express-session middleware for implementing Session Cookies
+// each user gets a session cookie called (connect.sid by default)
+// use the network tab to ensure sessions are enforced
 app.use(
     session({
-        secret: SESSION_SECRET, // Replace with a Hardcoded key
+        secret: SESSION_SECRET, // Replace with a generated key from login.js
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -110,6 +112,25 @@ app.get('/rest/accounts', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 });
+
+// /current-user end point to dynamically fetch the logged in user to display in
+// index.html or other pages on the navigation bar
+app.get('/current-user', (req, res) => {
+    // Check if there's a session and a 'user' object
+    if (req.session && req.session.user) {
+      // Return user info
+      return res.json({
+        loggedIn: true, // is loggedIn is returned true only if user is logged in
+        user: req.session.user,
+      });
+    } else {
+      // Not logged in
+      return res.status(401).json({
+        loggedIn: false,
+        message: 'Not logged in',
+      });
+    }
+  });  
 
 // Logout route to destroy session for the user and clear the session cookie
 app.post('/logout', (req, res) => {
