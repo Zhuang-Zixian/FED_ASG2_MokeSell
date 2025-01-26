@@ -18,6 +18,15 @@ console.log('Generated Session Secret:', SESSION_SECRET);
 // API Requests to RestDB
 const app = express();
 
+// Middleware to prevent caching
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    res.set('Surrogate-Control', 'no-store');
+    next();
+});
+
 // Middleware to enable CORS for all routes
 app.use(
     cors({
@@ -42,6 +51,20 @@ app.use(
         },
     })
 );
+
+// Middleware to clear stale cookies when the server starts (works only in development)
+if (process.env.NODE_ENV === 'development') {
+    app.use((req, res, next) => {
+        if (!req.session.user) {
+            res.clearCookie('connect.sid', {
+                path: '/',
+                httpOnly: true,
+                secure: false, // Set to true for HTTPS in production
+            });
+        }
+        next();
+    });
+}
 
 // Proxy POST request to RestDB rest/accounts collection
 app.post('/rest/accounts', async (req, res) => {
@@ -124,10 +147,16 @@ app.get('/current-user', (req, res) => {
         user: req.session.user,
       });
     } else {
+      // Clear cookie if no valid session
+      res.clearCookie('connect.sid', {
+          path: '/',
+          httpOnly: true,
+          secure: false, // Set to true for HTTPS
+      });
       // Not logged in
       return res.status(401).json({
         loggedIn: false,
-        message: 'Not logged in',
+        message: 'Session Expired. Please log in again',
       });
     }
   });  
