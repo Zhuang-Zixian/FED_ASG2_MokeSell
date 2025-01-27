@@ -18,6 +18,15 @@ console.log('Generated Session Secret:', SESSION_SECRET);
 // API Requests to RestDB
 const app = express();
 
+// Middleware to prevent caching
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    res.set('Surrogate-Control', 'no-store');
+    next();
+});
+
 // Middleware to enable CORS for all routes
 app.use(
     cors({
@@ -28,9 +37,11 @@ app.use(
 app.use(bodyParser.json());
 
 // Configure express-session middleware for implementing Session Cookies
+// each user gets a session cookie called (connect.sid by default)
+// use the network tab to ensure sessions are enforced
 app.use(
     session({
-        secret: SESSION_SECRET, // Replace with a Hardcoded key
+        secret: SESSION_SECRET, // Replace with a generated key from login.js
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -40,6 +51,20 @@ app.use(
         },
     })
 );
+
+// Middleware to clear stale cookies when the server starts (works only in development)
+if (process.env.NODE_ENV === 'development') {
+    app.use((req, res, next) => {
+        if (!req.session.user) {
+            res.clearCookie('connect.sid', {
+                path: '/',
+                httpOnly: true,
+                secure: false, // Set to true for HTTPS in production
+            });
+        }
+        next();
+    });
+}
 
 // Proxy POST request to RestDB rest/accounts collection
 app.post('/rest/accounts', async (req, res) => {
@@ -110,6 +135,31 @@ app.get('/rest/accounts', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 });
+
+// /current-user end point to dynamically fetch the logged in user to display in
+// index.html or other pages on the navigation bar
+app.get('/current-user', (req, res) => {
+    // Check if there's a session and a 'user' object
+    if (req.session && req.session.user) {
+      // Return user info
+      return res.json({
+        loggedIn: true, // is loggedIn is returned true only if user is logged in
+        user: req.session.user,
+      });
+    } else {
+      // Clear cookie if no valid session
+      res.clearCookie('connect.sid', {
+          path: '/',
+          httpOnly: true,
+          secure: false, // Set to true for HTTPS
+      });
+      // Not logged in
+      return res.status(401).json({
+        loggedIn: false,
+        message: 'Session Expired. Please log in again',
+      });
+    }
+  });  
 
 // Logout route to destroy session for the user and clear the session cookie
 app.post('/logout', (req, res) => {
