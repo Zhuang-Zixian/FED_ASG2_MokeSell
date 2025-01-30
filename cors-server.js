@@ -186,6 +186,34 @@ app.post('/logout', (req, res) => {
     }
 });
 
+// Proxy GET request to RestDB "products" collection
+app.get('/rest/products', async (req, res) => {
+    try {
+        console.log('Fetching products from RestDB...');
+
+        const response = await fetch('https://mokesell-6d16.restdb.io/rest/products', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': '678a2a8729bb6d839ec56bd4', // Your RestDB API Key
+            },
+        });
+
+        const data = await response.json();
+        console.log('RestDB response:', data);
+
+        if (!response.ok) {
+            console.error('Error from RestDB:', data);
+            return res.status(response.status).json(data);
+        }
+
+        res.json(data); // Send back the response from RestDB
+    } catch (error) {
+        console.error('Error in proxy GET to RestDB:', error.message);
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+});
+
 // Start the server
 const PORT = 5000;
 app.listen(PORT, () => {

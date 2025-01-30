@@ -16,7 +16,8 @@ body {
 /* Image Carousel - General */
 .carousel-inner img {
     height: auto; /* Let height adjust based on aspect ratio */
-    max-height: 550px; /* Cap the maximum height */
+    min-height: 550px; /* Cap the maximum height */
+    max-height: 700px; /* Prevents the image from becoming too big */
     width: 100%;
     object-fit: cover; /* Ensure proper scaling without distortion */
 }
@@ -48,12 +49,43 @@ body {
 
 .category-item {
     text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.category-item:hover {
+    transform: translateY(-5px) scale(1.1); /* Hover effect for category icons*/
 }
 
 .category-icon {
     width: 80px;
     height: 80px;
     font-size: 1.5rem;
+}
+
+/* Featured Products Section CSS */
+/* Ensure product images display correctly */
+.product-img {
+    width: 100%;
+    height: 220px; /* Set fixed height */
+    object-fit: cover; /* Prevents image distortion */
+    border-radius: 10px; /* Smooth corners */
+}
+
+/* Ensure product cards have equal height */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden;
+}
+
+/* Ensure product description does not expand card height */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Signup Form */

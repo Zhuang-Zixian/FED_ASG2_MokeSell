@@ -96,6 +96,68 @@ async function checkCurrentUser() {
     }, 1000); // 1-second delay to showcase lottie animation
   });
   
-  // On DOMContentLoaded, check session status
-  document.addEventListener("DOMContentLoaded", checkCurrentUser);
+  // Fetching from RESTDB products collection
+  document.addEventListener("DOMContentLoaded", async function () {
+    const API_URL = "http://localhost:5000/rest/products"; // Proxy to RestDB
+    const API_KEY = "678a2a8729bb6d839ec56bd4"; // Ensure correct API key
+    const productContainer = document.getElementById("productContainer");
+
+    try {
+        console.log("Fetching products from RestDB...");
+        const response = await fetch(API_URL, {
+            method: "GET",
+            headers: { 
+                "Content-Type": "application/json",
+                "x-apikey": API_KEY, 
+            },
+            credentials: "include"
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch products.");
+
+        const products = await response.json();
+        console.log("RestDB response:", products);
+
+        if (products.length === 0) {
+            productContainer.innerHTML = `<p class="text-center text-muted">No products available.</p>`;
+            return;
+        }
+
+        let productHTML = "";
+
+        products.forEach((product) => {
+            // Fix: Append API key to the media URL to avoid 403 Forbidden errors
+            const imageUrl = (product.image_url && product.image_url.length > 0) 
+                ? `https://mokesell-6d16.restdb.io/media/${product.image_url[0]}?key=${API_KEY}&s=w`  
+                : "images/placeholder.jpg"; // Use placeholder if missing
+
+            productHTML += `
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h6 class="m-0">${product.seller[0]}</h6> <!-- Display seller name at the top -->
+                        </div>
+                        <img src="${imageUrl}" class="card-img-top product-img" alt="${product.name}" 
+                             onerror="this.onerror=null; this.src='images/placeholder.jpg';">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="fw-bold">$${product.price.toFixed(2)}</p>
+                            <p class="text-muted">${product.condition[0]}</p>
+                            <a href="#" class="btn btn-primary mt-auto">View Product</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        productContainer.innerHTML = productHTML;
+    } catch (error) {
+        console.error("Error loading products:", error);
+        productContainer.innerHTML = `<p class="text-center text-danger">Error loading products. Please try again.</p>`;
+    }
+});
+
+
+// On DOMContentLoaded, check session status
+document.addEventListener("DOMContentLoaded", checkCurrentUser);
   
