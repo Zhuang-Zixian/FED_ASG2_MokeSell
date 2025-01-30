@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
+    <title>Index - MokeSell</title>
     <!-- Normalize.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <!-- Bootstrap CSS via jsDelivr -->
@@ -104,7 +104,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Watches</a></li>
                                 <li><a class="dropdown-item" href="#">Figurines</a></li>
-                                <li><a class="dropdown-item" href="#">Baby toys</a></li>
+                                <li><a class="dropdown-item" href="#">Toys</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -141,13 +141,107 @@
     </div>
     <!-- End of Navbar -->
 
-    
-    <!-- Main Image Carousel -->
+    <!-- Main Section -->
     <main>
-        <!-- Placeholder for future code additions -->
-         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <!-- Image Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/image-carousel.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="images/image-carousel-1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="images/image-carousel-2.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>  
+        <!-- End of Main Image Carousel -->
+
+        <!-- Categories Section -->
+        <section class="categories-section py-6">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="mb-0">What would you like to find?</h3>
+                    <a href="#" class="btn btn-link text-decoration-none">See All <i class="bi bi-arrow-right"></i></a>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        <div class="category-item">
+                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <p class="mt-2">Property</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        <div class="category-item">
+                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
+                                <i class="bi bi-car-front"></i>
+                            </div>
+                            <p class="mt-2">Cars</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        <div class="category-item">
+                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
+                                <i class="bi bi-tools"></i>
+                            </div>
+                            <p class="mt-2">Home Services</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        <div class="category-item">
+                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <p class="mt-2">Mobile Phones</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        <div class="category-item">
+                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
+                                <i class="bi bi-bag-fill"></i>
+                            </div>
+                            <p class="mt-2">Women's Fashion</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        <div class="category-item">
+                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
+                                <i class="bi bi-person-bounding-box"></i>
+                            </div>
+                            <p class="mt-2">Men's Fashion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of Categories Section -->
+
+        <!-- Featured Products Section -->
+        <section class="container my-5">
+            <h3 class="mb-4">Featured Products</h3>
+            <div class="row" id="productContainer">
+                <!-- Product Cards will be dynamically inserted here -->
+            </div>
+        </section>
+        
     </main>
-    <!-- End of Main Image Carousel -->
 
     <!-- DuckDuckGo Simple Chatbot -->
     <aside id="chat-container" class="position-fixed bottom-0 end-0 p-3 chat-container">
