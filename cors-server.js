@@ -32,6 +32,7 @@ app.use(
     cors({
         origin: ['http://localhost:5173', 'https://zhuang-zixian.github.io/FED_ASG2_MokeSell/'], // Allowed origins
         credentials: true, // Allow credentials (session cookies)
+        exposedHeaders: ["x-apikey"], // Allow API key in headers
     })
 );
 app.use(bodyParser.json());
@@ -189,30 +190,60 @@ app.post('/logout', (req, res) => {
 // Proxy GET request to RestDB "products" collection
 app.get('/rest/products', async (req, res) => {
     try {
-        console.log('Fetching products from RestDB...');
-
-        const response = await fetch('https://mokesell-6d16.restdb.io/rest/products', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-apikey': '678a2a8729bb6d839ec56bd4', // Your RestDB API Key
-            },
-        });
-
-        const data = await response.json();
-        console.log('RestDB response:', data);
-
-        if (!response.ok) {
-            console.error('Error from RestDB:', data);
-            return res.status(response.status).json(data);
-        }
-
-        res.json(data); // Send back the response from RestDB
+      console.log('Fetching products from RestDB...');
+      const response = await fetch('https://mokesell-6d16.restdb.io/rest/products', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-apikey': '678a2a8729bb6d839ec56bd4', // Replace with your actual RestDB API key
+        },
+      });
+  
+      const data = await response.json();
+      console.log('RestDB response:', data);
+  
+      if (!response.ok) {
+        console.error('Error from RestDB:', data);
+        return res.status(response.status).json(data);
+      }
+  
+      // Send back the products list
+      res.json(data);
     } catch (error) {
-        console.error('Error in proxy GET to RestDB:', error.message);
-        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+      console.error('Error in proxy GET to RestDB:', error.message);
+      res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
-});
+  });
+  
+  // Proxy GET request to fetch images from RestDB (to fix 403 Forbidden)
+  app.get('/proxy/media/:imageId', async (req, res) => {
+    const imageId = req.params.imageId;
+    const apiKey = '678a2a8729bb6d839ec56bd4'; // Replace with the same RestDB key
+  
+    // Base URL to fetch the raw file. No extra `?key=...` needed if NOT restricted.
+    const imageUrl = `https://mokesell-6d16.restdb.io/media/${imageId}`;
+  
+    try {
+      // Pass the key in the request header
+      const response = await fetch(imageUrl, {
+        headers: { 'x-apikey': apiKey },
+      });
+  
+      if (!response.ok) {
+        console.error(`Error fetching image: ${response.statusText}`);
+        return res.status(response.status).send('Error fetching image');
+      }
+  
+      // Stream the image back to the browser
+      const buffer = await response.arrayBuffer();
+      res.set('Content-Type', response.headers.get('Content-Type') || 'image/jpeg');
+      res.send(Buffer.from(buffer));
+    } catch (error) {
+      console.error('Error fetching image:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
 
 // Start the server
 const PORT = 5000;
