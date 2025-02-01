@@ -152,7 +152,46 @@ async function checkCurrentUser() {
       productContainer.innerHTML = `<p class="text-center text-danger">Error loading products. Please try again.</p>`;
     }
   });
-  
+
+  // MailJet newsletter API signing up 
+  document.addEventListener("DOMContentLoaded", function () {
+    const newsletterForm = document.getElementById("newsletterForm");
+    const newsletterEmail = document.getElementById("newsletterEmail");
+    const newsletterMessage = document.getElementById("newsletterMessage");
+
+    newsletterForm.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const email = newsletterEmail.value.trim();
+        if (!email) {
+            newsletterMessage.textContent = "Please enter a valid email.";
+            newsletterMessage.style.color = "red";
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:5000/api/newsletter", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                newsletterMessage.textContent = data.message;
+                newsletterMessage.style.color = "green";
+                newsletterEmail.value = ""; // Clear input field
+            } else {
+                throw new Error(data.message || "Failed to sign up.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            newsletterMessage.textContent = "Error signing up. Please try again.";
+            newsletterMessage.style.color = "red";
+        }
+    });
+});
+
 
 // On DOMContentLoaded, check session status
 document.addEventListener("DOMContentLoaded", checkCurrentUser);

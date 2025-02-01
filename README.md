@@ -1,6 +1,8 @@
 # FED_ASG2_MokeSell
 By: Aidan & Zixian
-
+NOTE: anything that makes a request to RestDB does not work and ONLY works locally as it requires
+      the CORS Proxy Server to make requests only way to test is to clone the project and test locally.
+      
 Click here to visit the website hosted on github: [Here](https://zhuang-zixian.github.io/FED_ASG2_MokeSell/)
 
 ---

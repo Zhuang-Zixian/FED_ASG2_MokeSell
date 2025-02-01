@@ -6,6 +6,7 @@ const cors = require('cors'); // middleware to handle CORS
 const bodyParser = require('body-parser'); // parses json req
 const session = require('express-session'); // add express sessions for session cookies
 const crypto = require('crypto'); // For generating secure random secrets
+const mailjet = require('node-mailjet'); // For Newsletter section to send news letter through mailjet API
 
 // To generate random 10 character string for sessions secret
 const SESSION_SECRET = crypto.randomBytes(10).toString('hex'); // using Node.js crypto module to generate secrets
@@ -215,12 +216,11 @@ app.get('/rest/products', async (req, res) => {
     }
   });
   
-  // Proxy GET request to fetch images from RestDB (to fix 403 Forbidden)
+  // Proxy GET request to fetch images from RestDB
   app.get('/proxy/media/:imageId', async (req, res) => {
     const imageId = req.params.imageId;
-    const apiKey = '678a2a8729bb6d839ec56bd4'; // Replace with the same RestDB key
-  
-    // Base URL to fetch the raw file. No extra `?key=...` needed if NOT restricted.
+    const apiKey = '678a2a8729bb6d839ec56bd4'; // RestDB key
+
     const imageUrl = `https://mokesell-6d16.restdb.io/media/${imageId}`;
   
     try {
@@ -244,6 +244,49 @@ app.get('/rest/products', async (req, res) => {
     }
   });
   
+  // Mailjet API to send newsletter to users
+const MJ_APIKEY_PUBLIC = '041f8eb310e0ab5db8c2833bf3947079';
+const MJ_APIKEY_PRIVATE = '3de5c1362cbd8b33e8d042c0fffd8404';
+const mailjetClient = mailjet.apiConnect(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE);
+
+app.post('/api/newsletter', async (req, res) => {
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ message: "Email is required." });
+    }
+
+    try {
+        // Replace with your verified "From" address in Mailjet
+        const fromEmail = "zixianzhuang05@gmail.com"; 
+        const fromName = "My Newsletter";
+
+        const request = await mailjetClient.post("send", { version: "v3.1" }).request({
+            Messages: [
+                {
+                    From: {
+                        Email: fromEmail,
+                        Name: fromName
+                    },
+                    To: [
+                        {
+                            Email: email
+                        }
+                    ],
+                    Subject: "Thanks for signing up!",
+                    TextPart: "Welcome to our newsletter!",
+                    HTMLPart: "<h3>Thanks for subscribing!</h3><p>We'll keep you updated!</p>"
+                }
+            ]
+        });
+
+        console.log("Mailjet response:", request.body);
+        res.json({ message: "Confirmation email sent to " + email });
+    } catch (error) {
+        console.error("Mailjet error:", error);
+        res.status(500).json({ message: "Error sending email" });
+    }
+});
+
 
 // Start the server
 const PORT = 5000;
