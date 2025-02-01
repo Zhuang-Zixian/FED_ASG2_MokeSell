@@ -78,7 +78,13 @@ body {
     flex-direction: column;
     border-radius: 12px; /* Rounded corners */
     overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
 
 /* Ensure product description does not expand card height */
 .card-body {
