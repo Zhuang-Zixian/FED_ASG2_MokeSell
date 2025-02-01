@@ -67,7 +67,7 @@ body {
 .product-img {
     width: 100%;
     height: 220px; /* Set fixed height */
-    object-fit: cover; /* Prevents image distortion */
+    object-fit: contain; /* Prevents image distortion */
     border-radius: 10px; /* Smooth corners */
 }
 
