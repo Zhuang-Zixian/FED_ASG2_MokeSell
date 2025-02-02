@@ -41,6 +41,7 @@ async function checkCurrentUser() {
     <i class="bi bi-person me-2"></i> Hello, ${username}
     `;
     userDropdown.innerHTML = `
+    <li><a class="dropdown-item" href="profile.html">Profile</a></li>
     <li><a class="dropdown-item" href="#" id="logoutLink">Logout</a></li>
     `;
   

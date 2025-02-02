@@ -245,11 +245,11 @@ app.get('/rest/products', async (req, res) => {
   });
   
   // Mailjet API to send newsletter to users
-const MJ_APIKEY_PUBLIC = '041f8eb310e0ab5db8c2833bf3947079';
-const MJ_APIKEY_PRIVATE = '3de5c1362cbd8b33e8d042c0fffd8404';
-const mailjetClient = mailjet.apiConnect(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE);
+  const MJ_APIKEY_PUBLIC = '041f8eb310e0ab5db8c2833bf3947079';
+  const MJ_APIKEY_PRIVATE = '3de5c1362cbd8b33e8d042c0fffd8404';
+  const mailjetClient = mailjet.apiConnect(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE);
 
-app.post('/api/newsletter', async (req, res) => {
+  app.post('/api/newsletter', async (req, res) => {
     const { email } = req.body;
     if (!email) {
         return res.status(400).json({ message: "Email is required." });
@@ -257,7 +257,7 @@ app.post('/api/newsletter', async (req, res) => {
 
     try {
         // Replace with your verified "From" address in Mailjet
-        const fromEmail = "zixianzhuang05@gmail.com"; 
+        const fromEmail = "mokesellstore@gmail.com"; 
         const fromName = "My Newsletter";
 
         const request = await mailjetClient.post("send", { version: "v3.1" }).request({
@@ -286,7 +286,6 @@ app.post('/api/newsletter', async (req, res) => {
         res.status(500).json({ message: "Error sending email" });
     }
 });
-
 
 // Start the server
 const PORT = 5000;
