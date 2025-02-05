@@ -2,7 +2,7 @@ const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
 
-// Define angles for each section
+// Define the degree ranges for values 1-6
 const rotationValues = [
   { minDegree: 0, maxDegree: 30, value: 2 },
   { minDegree: 31, maxDegree: 90, value: 1 },
@@ -13,16 +13,26 @@ const rotationValues = [
   { minDegree: 331, maxDegree: 360, value: 2 },
 ];
 
-// Pie chart data
+// **Manually mapped discount percentages**
+const discountMapping = {
+  1: "12%",
+  2: "9%",
+  3: "10%",
+  4: "20%",
+  5: "25%",
+  6: "5%",
+};
+
+// **Ensure slices remain equal in size**
 const data = [16, 16, 16, 16, 16, 16];
 const pieColors = ["#0d6efd", "#609ffc", "#0d6efd", "#609ffc", "#0d6efd", "#609ffc"];
 
-// Create the chart
+// **Create the Pie Chart**
 let myChart = new Chart(wheel, {
   plugins: [ChartDataLabels],
   type: "pie",
   data: {
-    labels: [1, 2, 3, 4, 5, 6],
+    labels: [1, 2, 3, 4, 5, 6], // Keep 1-6 for internal mapping
     datasets: [{ backgroundColor: pieColors, data: data }],
   },
   options: {
@@ -40,39 +50,68 @@ let myChart = new Chart(wheel, {
   },
 });
 
-// Determine result based on angle
+// **Reset wheel before each spin**
+const resetWheel = () => {
+  myChart.options.rotation = 0;
+  myChart.update();
+};
+
+// **Determine the discount based on the final stopping angle**
 const valueGenerator = (angleValue) => {
-  for (let i of rotationValues) {
-    if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-      finalValue.innerHTML = `<p>Value: ${i.value}</p>`;
-      spinBtn.disabled = false;
+  let selectedValue = null;
+
+  // Loop through rotationValues to find the matching segment
+  for (let i = 0; i < rotationValues.length; i++) {
+    if (angleValue >= rotationValues[i].minDegree && angleValue <= rotationValues[i].maxDegree) {
+      selectedValue = rotationValues[i].value;
       break;
     }
   }
+
+  // **Assign hardcoded discount**
+  let discount = discountMapping[selectedValue] || "No Discount";
+
+  // **Display the correct discount result with claim button**
+  finalValue.innerHTML = `
+    <p>🎉 You won a <strong>${discount} Discount!</strong></p>
+    <button id="claim-btn" class="claim-btn">Claim Discount</button>
+  `;
+  
+  spinBtn.disabled = false;
+
+  // **Attach event listener to claim button**
+  document.getElementById("claim-btn").addEventListener("click", () => {
+    alert(`🎉 Your ${discount} discount has been claimed!`);
+    console.log(`User claimed ${discount} discount`);
+  });
 };
 
-// Spin logic
-let count = 0;
-let resultValue = 101;
-
+// **Spin logic**
 spinBtn.addEventListener("click", () => {
   spinBtn.disabled = true;
-  finalValue.innerHTML = `<p>Good Luck!</p>`;
-  let randomDegree = Math.floor(Math.random() * 360);
-  
-  let rotationInterval = window.setInterval(() => {
-    myChart.options.rotation += resultValue;
-    myChart.update();
+  finalValue.innerHTML = `<p>Spinning...</p>`;
 
-    if (myChart.options.rotation >= 360) {
-      count++;
-      resultValue -= 5;
-      myChart.options.rotation = 0;
-    } else if (count > 15 && myChart.options.rotation == randomDegree) {
-      valueGenerator(randomDegree);
+  resetWheel(); // Reset wheel before spinning
+
+  let randomDegree = Math.floor(Math.random() * 360) + 1800; // Ensures multiple rotations before stopping
+  let currentRotation = 0;
+  let spinSpeed = 20;
+
+  let rotationInterval = setInterval(() => {
+    currentRotation += spinSpeed;
+
+    if (currentRotation >= randomDegree) {
       clearInterval(rotationInterval);
-      count = 0;
-      resultValue = 101;
+
+      let stoppingAngle = randomDegree % 360; // Get final stopping angle
+      valueGenerator(stoppingAngle); // Determine the winning discount
+      spinBtn.disabled = false;
     }
+
+    myChart.options.rotation = currentRotation % 360;
+    myChart.update();
   }, 10);
 });
+
+
+// JS Code to send the voucher won to the RestDB collection
