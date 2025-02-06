@@ -80,9 +80,46 @@ const valueGenerator = (angleValue) => {
   spinBtn.disabled = false;
 
   // **Attach event listener to claim button**
-  document.getElementById("claim-btn").addEventListener("click", () => {
-    alert(`🎉 Your ${discount} discount has been claimed!`);
-    console.log(`User claimed ${discount} discount`);
+  document.getElementById("claim-btn").addEventListener("click", async () => {
+    try {
+      // Fetch the currently logged-in user
+      const userResp = await fetch("http://localhost:5000/current-user", {
+        credentials: "include",
+        headers: { "Cache-Control": "no-store" },
+      });
+
+      if (!userResp.ok) throw new Error("Not logged in");
+
+      const userData = await userResp.json();
+      if (!userData.loggedIn || !userData.user?.username) throw new Error("Not logged in");
+
+      const username = userData.user.username; // Get logged-in username
+
+      // **Generate a unique voucher code**
+      const voucherCode = `VOUCHER-${Math.random().toString(36).substr(2, 8).toUpperCase()}`;
+
+      // **Send the voucher to RestDB**
+      const response = await fetch("http://localhost:5000/save-voucher", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: username,    // Store logged-in user
+          discount: discount,
+          code: voucherCode,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed to save voucher");
+
+      const data = await response.json();
+      alert(`🎉 Your ${discount} discount has been claimed!\nVoucher Code: ${voucherCode}`);
+      console.log("Voucher saved to RestDB:", data);
+
+    } catch (error) {
+      console.error("Error saving voucher:", error);
+      alert("Error: Please log in to claim your voucher.");
+    }
   });
 };
 
@@ -112,6 +149,3 @@ spinBtn.addEventListener("click", () => {
     myChart.update();
   }, 10);
 });
-
-
-// JS Code to send the voucher won to the RestDB collection
