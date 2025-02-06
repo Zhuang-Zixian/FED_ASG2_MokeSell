@@ -287,6 +287,36 @@ app.get('/rest/products', async (req, res) => {
     }
 });
 
+// Save voucher to RestDB
+app.post("/save-voucher", async (req, res) => {
+    try {
+        const { user, discount, code } = req.body;
+
+        if (!user) {
+            return res.status(401).json({ message: "Error: User not logged in." });
+        }
+
+        const response = await fetch("https://mokesell-6d16.restdb.io/rest/voucher", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "678a2a8729bb6d839ec56bd4", // Replace with your RestDB API Key
+            },
+            body: JSON.stringify({ user, discount, code }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error("Failed to save voucher");
+
+        res.json({ message: "Voucher saved successfully!", data });
+
+    } catch (error) {
+        console.error("Error saving voucher:", error);
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
+    }
+});
+
+
 // Start the server
 const PORT = 5000;
 app.listen(PORT, () => {

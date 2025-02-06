@@ -133,3 +133,10 @@ body {
 .footer-logo {
     height: 32px;
 }
+
+/* Customize the appearance of the active radio button */
+.btn-check:checked + .btn-outline-secondary {
+    background-color: #007bff; /* Change to your desired color */
+    color: white; /* Change text color */
+    border-color: #007bff; /* Change border color */
+}
