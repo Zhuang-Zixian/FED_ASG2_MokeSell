@@ -187,62 +187,6 @@ app.post('/logout', (req, res) => {
         res.status(400).json({ message: 'No active session to log out.' });
     }
 });
-
-// Proxy GET request to RestDB "products" collection
-app.get('/rest/products', async (req, res) => {
-    try {
-      console.log('Fetching products from RestDB...');
-      const response = await fetch('https://mokesell-6d16.restdb.io/rest/products', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-apikey': '678a2a8729bb6d839ec56bd4', // Replace with your actual RestDB API key
-        },
-      });
-  
-      const data = await response.json();
-      console.log('RestDB response:', data);
-  
-      if (!response.ok) {
-        console.error('Error from RestDB:', data);
-        return res.status(response.status).json(data);
-      }
-  
-      // Send back the products list
-      res.json(data);
-    } catch (error) {
-      console.error('Error in proxy GET to RestDB:', error.message);
-      res.status(500).json({ message: 'Internal Server Error', error: error.message });
-    }
-  });
-  
-  // Proxy GET request to fetch images from RestDB
-  app.get('/proxy/media/:imageId', async (req, res) => {
-    const imageId = req.params.imageId;
-    const apiKey = '678a2a8729bb6d839ec56bd4'; // RestDB key
-
-    const imageUrl = `https://mokesell-6d16.restdb.io/media/${imageId}`;
-  
-    try {
-      // Pass the key in the request header
-      const response = await fetch(imageUrl, {
-        headers: { 'x-apikey': apiKey },
-      });
-  
-      if (!response.ok) {
-        console.error(`Error fetching image: ${response.statusText}`);
-        return res.status(response.status).send('Error fetching image');
-      }
-  
-      // Stream the image back to the browser
-      const buffer = await response.arrayBuffer();
-      res.set('Content-Type', response.headers.get('Content-Type') || 'image/jpeg');
-      res.send(Buffer.from(buffer));
-    } catch (error) {
-      console.error('Error fetching image:', error);
-      res.status(500).send('Internal Server Error');
-    }
-  });
   
   // Mailjet API to send newsletter to users
   const MJ_APIKEY_PUBLIC = '041f8eb310e0ab5db8c2833bf3947079';
