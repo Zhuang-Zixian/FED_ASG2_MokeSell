@@ -36,7 +36,10 @@ app.use(
         exposedHeaders: ["x-apikey"], // Allow API key in headers
     })
 );
-app.use(bodyParser.json());
+
+// JSON parsing is enabled
+app.use(express.json());
+// app.use(bodyParser.json()); //deprecated
 
 // Configure express-session middleware for implementing Session Cookies
 // each user gets a session cookie called (connect.sid by default)
@@ -137,6 +140,81 @@ app.get('/rest/accounts', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 });
+
+// PATCH request to update user profile in RestDB
+app.patch('/update-profile', async (req, res) => {
+    try {
+        const { newUsername, newEmail, newPassword } = req.body;
+
+        if (!req.session.user) {
+            return res.status(401).json({ message: "Unauthorized: Please log in first." });
+        }
+
+        // Always search using the current session username/email
+        let searchQuery = `q={"$or":[{"username":"${req.session.user.username}"}, {"useremail":"${req.session.user.email}"}]}`;
+        const searchURL = `https://mokesell-6d16.restdb.io/rest/accounts?${searchQuery}`;
+
+        console.log("Searching for user with session credentials:", searchQuery);
+
+        const searchResponse = await fetch(searchURL, {
+            method: "GET",
+            headers: {
+                "x-apikey": "678a2a8729bb6d839ec56bd4",
+                "Content-Type": "application/json",
+            },
+        });
+
+        const users = await searchResponse.json();
+        console.log("RestDB Response:", users);
+
+        if (!searchResponse.ok || users.length === 0) {
+            return res.status(404).json({ message: "User not found in RestDB." });
+        }
+
+        const user = users[0];
+        const userId = user._id;
+        let updateData = {};
+
+        if (newUsername) updateData.username = newUsername;
+        if (newEmail) updateData.useremail = newEmail;
+        if (newPassword) {
+            updateData.userpassword = crypto.createHash('sha256').update(newPassword).digest('hex');
+        }
+
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({ message: "No valid fields provided for update." });
+        }
+
+        console.log("Updating User ID:", userId, "with data:", updateData);
+
+        const updateResponse = await fetch(`https://mokesell-6d16.restdb.io/rest/accounts/${userId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "678a2a8729bb6d839ec56bd4",
+            },
+            body: JSON.stringify(updateData),
+        });
+
+        const updateResult = await updateResponse.json();
+        console.log("Update Response:", updateResult);
+
+        if (!updateResponse.ok) {
+            throw new Error(`Update failed: ${updateResult.message || updateResponse.statusText}`);
+        }
+
+        // Update session with new username/email
+        if (newUsername) req.session.user.username = newUsername;
+        if (newEmail) req.session.user.email = newEmail;
+
+        res.json({ message: "Profile updated successfully!", data: updateResult });
+
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
+    }
+});
+
 
 // /current-user end point to dynamically fetch the logged in user to display in
 // index.html or other pages on the navigation bar

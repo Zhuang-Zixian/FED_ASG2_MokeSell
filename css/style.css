@@ -66,6 +66,7 @@ body {
 /* Ensure product images display correctly */
 .card-img-top {
     height: 250px;          /* Adjust to your desired height */
+    object-fit: contain;
   }
 
 /* Hover effect */
@@ -124,4 +125,28 @@ line-height: 13px;
     background-color: #007bff; /* Change to your desired color */
     color: white; /* Change text color */
     border-color: #007bff; /* Change border color */
+}
+
+/* Eye of Rah Icon */
+.input-group {
+    position: relative;
+}
+
+.input-group-text {
+    cursor: pointer;
+    background: white;
+    border-left: none;
+}
+
+.input-group .form-control {
+    border-right: none;
+}
+
+.toggle-password {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.toggle-password:hover {
+    color: #000;
 }
