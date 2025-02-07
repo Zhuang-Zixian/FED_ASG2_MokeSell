@@ -153,7 +153,13 @@ async function checkCurrentUser() {
             </div>
           </div>
         `;
-  
+
+        // Add click event listener to each product
+        productDiv.querySelector('.product').addEventListener('click', function() {
+          // Redirect to product page with the product ID as a URL parameter
+          window.location.href = `product.html?id=${product._id}`;
+        });
+
         productList.appendChild(productDiv);
       });
     }
