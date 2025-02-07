@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - MokeSell</title>
+    <!-- Normalize.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Bootstrap CSS via jsDelivr -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons via jsDelivr-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS Linking-->
+     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M5HBCMZQ');</script>
+    <!-- End Google Tag Manager -->
+    
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5HBCMZQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Lottie Animation Loader -->
+    <div id="loader-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player 
+            src="https://lottie.host/e012ad42-3f38-4645-be1d-c4f4b1f5fc21/Ex0KvPcBvx.lottie" 
+            background="transparent" 
+            speed="1" 
+            style="width: 300px; height: 300px" 
+            loop 
+            autoplay>
+        </dotlottie-player>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <div class="sticky-top">
+       <!-- Dismissible Promotion Banner -->
+        <div class="alert alert-primary alert-dismissible fade show rounded-0 border-0 text-center m-0" role="alert">
+            <strong>🎉 Spin the Lucky Wheel!</strong> Try your luck and win a discount voucher. 
+            <a href="game.html" class="fw-bold text-decoration-underline">Spin Now</a>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- End of Dismissible Promotion Banner -->
+
+        <!-- Main Navbar Code -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/mokesell_logo_blue.png" class="img-fluid logo" alt="MokeSell Logo"> 
+                </a>
+
+                <!-- Right-Aligned Icons (Mobile Only) -->
+                <ul class="navbar-nav d-lg-none d-flex flex-row align-items-center ms-auto">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-white" href="#"><i class="bi bi-person"></i></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-white" href="#"><i class="bi bi-cart"></i></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
+                    </li>
+                </ul>
+
+                <!-- Navbar Toggler for Mobile View -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <!-- Categories -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white active" aria-current="page" href="#">Clothes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Shoes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Jewellery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Electronics</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                More
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Watches</a></li>
+                                <li><a class="dropdown-item" href="#">Figurines</a></li>
+                                <li><a class="dropdown-item" href="#">Toys</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Icons (Desktop Only) -->
+                    <ul class="navbar-nav d-none d-lg-flex align-items-center">
+                        <li class="nav-item dropdown mx-3 d-flex align-items-center text-white">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" 
+                                data-bs-toggle="dropdown" aria-expanded="false" id="userDisplay">
+                                <i class="bi bi-person me-2"></i> <span>Sign In</span> 
+                            </a>
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu dropdown-menu-start" id="userDropdownContent">
+                                <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                <li><a class="dropdown-item" href="signup.html">Signup</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" href="#"><i class="bi bi-cart"></i></a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light" href="listing.html">List</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- End of Navbar -->
+
+    <!-- Privacy Policy Content -->
+    <div class="container py-5">
+        <h1 class="text-primary text-left mb-4">Privacy Policy</h1>
+
+        <p class="lead text-left">
+            At MokeSell, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website and use our services. By using our website, you agree to the collection and use of information in accordance with this policy.
+        </p>
+
+        <h2 class="mt-5 text-left">1. Information We Collect</h2>
+        <p class="text-left">
+            We collect several types of information for various purposes to provide and improve our services to you. The types of data we collect include:
+        </p>
+        <ul class="text-left">
+            <li><strong>Personal Data:</strong> While using our service, we may ask you to provide us with certain personally identifiable information, including but not limited to your name, email address, phone number, and postal address, which can be used to contact or identify you.</li>
+            <li><strong>Transaction Data:</strong> We collect details of transactions you make through our website, including payment methods, billing details, purchase history, and shipping information.</li>
+            <li><strong>Usage Data:</strong> We collect information about how you access and use our website, such as IP addresses, browser type, device type, operating system, and pages you visit. This helps us understand user behavior and improve our services.</li>
+            <li><strong>Cookies and Tracking Data:</strong> We use cookies to track your preferences and enhance your browsing experience. Cookies help us analyze web traffic and personalize content. You can manage cookie preferences through your browser settings.</li>
+        </ul>
+
+        <h2 class="mt-5 text-left">2. How We Use Your Information</h2>
+        <p class="text-left">
+            The data we collect is used for several purposes, including:
+        </p>
+        <ul class="text-left">
+            <li><strong>To Provide and Maintain Our Service:</strong> We use your personal and transaction data to process orders, deliver products, and provide customer support.</li>
+            <li><strong>To Improve Our Services:</strong> We analyze usage data to better understand how visitors interact with our site. This helps us optimize our website’s functionality and user experience.</li>
+            <li><strong>To Communicate with You:</strong> We may use your email to send you order confirmations, shipping updates, and promotional offers if you have opted in to receive such notifications.</li>
+            <li><strong>To Personalize Your Experience:</strong> We may use the information collected to customize the content we show you based on your interests and preferences.</li>
+            <li><strong>To Prevent Fraud:</strong> Your data may be used to detect and prevent fraudulent activities, ensuring a safe and secure environment for all our users.</li>
+        </ul>
+
+        <h2 class="mt-5 text-left">3. How We Protect Your Information</h2>
+        <p class="text-left">
+            We are committed to ensuring that your personal information is secure. We use a variety of security measures to protect your data, including:
+        </p>
+        <ul class="text-left">
+            <li><strong>Encryption:</strong> We employ encryption technology to protect sensitive data, including payment details, during transmission over the internet.</li>
+            <li><strong>Secure Servers:</strong> Our website is hosted on secure servers, and we employ standard industry practices to safeguard your data from unauthorized access.</li>
+            <li><strong>Access Control:</strong> We limit access to personal data to authorized personnel only. All employees are trained to handle sensitive information with care and responsibility.</li>
+        </ul>
+
+        <h2 class="mt-5 text-left">4. Cookies</h2>
+        <p class="text-left">
+            Our website uses cookies to enhance your experience by remembering your preferences and providing personalized content. Cookies also help us analyze traffic and understand how visitors interact with our website.
+        </p>
+        <p class="text-left">
+            You can control the use of cookies through your browser settings. You can choose to disable cookies, but please note that some features of the website may not function properly without them.
+        </p>
+
+        <h2 class="mt-5 text-left">5. Sharing Your Information</h2>
+        <p class="text-left">
+            We do not sell, rent, or share your personal information with third parties for marketing purposes without your consent. However, we may share your information in the following circumstances:
+        </p>
+        <ul class="text-left">
+            <li><strong>Service Providers:</strong> We may share your information with trusted third-party companies that assist us in operating our website and processing transactions, such as payment processors and shipping providers.</li>
+            <li><strong>Legal Compliance:</strong> We may disclose your personal information if required to do so by law or in response to a valid legal request by public authorities, including a court or government agency.</li>
+            <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or asset sale, your personal data may be transferred as part of the transaction. We will notify you if this happens and explain your rights.</li>
+        </ul>
+
+        <h2 class="mt-5 text-left">6. Your Rights</h2>
+        <p class="text-left">
+            You have the following rights regarding your personal information:
+        </p>
+        <ul class="text-left">
+            <li><strong>Right to Access:</strong> You have the right to request access to the personal data we hold about you.</li>
+            <li><strong>Right to Rectify:</strong> You have the right to correct any inaccurate or incomplete personal data.</li>
+            <li><strong>Right to Erasure:</strong> You may request that we delete your personal data, subject to certain exceptions, such as legal obligations.</li>
+            <li><strong>Right to Object:</strong> You can object to the processing of your personal data for marketing purposes or based on legitimate interests.</li>
+        </ul>
+        <p class="text-left">
+            To exercise any of these rights, please contact us at the email provided below. We will respond to your request within the time frame required by applicable laws.
+        </p>
+
+        <h2 class="mt-5 text-left">7. Changes to This Privacy Policy</h2>
+        <p class="text-left">
+            We may update our Privacy Policy from time to time. Any changes will be posted on this page, and the updated policy will take effect as soon as it is published. We encourage you to review this policy periodically to stay informed about how we are protecting your information.
+        </p>
+
+        <h2 class="mt-5 text-left">8. Contact Us</h2>
+        <p class="text-left">
+            If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:
+            <br>
+            <a href="mailto:support@mokesell.com" class="text-primary">support@mokesell.com</a>
+        </p>
+    </div>
+    
+    <!-- Footer -->
+    <footer id="footer" class="mt-5">
+        <div class="container">
+            <div class="row d-flex flex-wrap justify-content-between py-5">
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu footer-menu-001">
+                        <div class="footer-intro mb-4">
+                            <a href="index.html">
+                                <img src="images/mokesell_logo_black.png" alt="MokeSell Logo" class="logo">
+                            </a>
+                        </div>
+                        <p>Discover the best deals and premium products on MokeSell. Shop from a wide range of categories and enjoy free shipping on all orders above $100.</p>
+                        <div class="social-links">
+                            <ul class="list-unstyled d-flex flex-wrap gap-3">
+                                <li>
+                                    <a href="https://www.facebook.com/" class="text-secondary" target="_blank">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://x.com/" class="text-secondary" target="_blank">
+                                        <i class="bi bi-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/" class="text-secondary" target="_blank">
+                                        <i class="bi bi-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/" class="text-secondary" target="_blank">
+                                        <i class="bi bi-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu footer-menu-002">
+                        <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+                        <ul class="menu-list list-unstyled text-uppercase fs-6">
+                            <li class="menu-item">
+                                <a href="#" class="item-anchor">About Us</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="item-anchor">Categories</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="item-anchor">Shop</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="contact.html" class="item-anchor">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu footer-menu-003">
+                        <h5 class="widget-title text-uppercase mb-4">Help & Info</h5>
+                        <ul class="menu-list list-unstyled text-uppercase fs-6">
+                            <li class="menu-item">
+                                <a href="https://www.dhl.com/sg-en/home/tracking.html" class="item-anchor" target="_blank">Track Your Order</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="returns-exchanges.html" class="item-anchor">Returns + Exchanges</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://www.dhl.com/discover/en-sg/ship-with-dhl/general-queries" class="item-anchor" target="_blank">Shipping + Delivery</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="faq.html" class="item-anchor">FAQs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu footer-menu-004">
+                        <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
+                        <p>Have questions or need help? <a href="mailto:support@mokesell.com" class="item-anchor">support@mokesell.com</a></p>
+                        <p>Call us: <a href="tel:+65 6460 6999" class="item-anchor">+65 6460 6999</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-top py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 d-flex flex-wrap">
+                        <div class="shipping me-4">
+                            <span>We ship with:</span>
+                            <img src="images/dhl-logo.png" alt="dhl logo" class="footer-logo">
+                            <img src="images/singpost-logo.png" alt="singpost logo" class="footer-logo">
+                        </div>
+                        <div class="payment-option">
+                            <span>Payment Options:</span>
+                            <img src="images/visa-logo.jpg" alt="visa logo" class="footer-logo">
+                            <img src="images/mastercard-logo.png" alt="mastercard logo" class="footer-logo">
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p>Â© Copyright 2025 MokeSell. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer --> 
+
+    <!-- Bootstrap JS  & Popper.js linked via jsDelivr -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5HBCMZQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- For API key and connecting to JS files -->
+        <script src="js/index.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/chatbot.js"></script>
+</body>
+</html>
