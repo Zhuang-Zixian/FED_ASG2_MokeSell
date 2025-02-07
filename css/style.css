@@ -64,35 +64,20 @@ body {
 
 /* Featured Products Section CSS */
 /* Ensure product images display correctly */
-.product-img {
-    width: 100%;
-    height: 220px; /* Set fixed height */
-    object-fit: contain; /* Prevents image distortion */
-    border-radius: 10px; /* Smooth corners */
-}
+.card-img-top {
+    height: 250px;          /* Adjust to your desired height */
+  }
 
-/* Ensure product cards have equal height */
-.card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 12px; /* Rounded corners */
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+/* Hover effect */
 .card:hover {
     transform: scale(1.03);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
-/* Ensure product description does not expand card height */
-.card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.card-text{
+line-height: 13px;
 }
+
 
 /* Signup Form */
 .form-container {
