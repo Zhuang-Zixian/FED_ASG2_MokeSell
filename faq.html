@@ -45,14 +45,6 @@
     
     <!-- Navigation Bar -->
     <div class="sticky-top">
-       <!-- Dismissible Promotion Banner -->
-        <div class="alert alert-primary alert-dismissible fade show rounded-0 border-0 text-center m-0" role="alert">
-            <strong>🎉 Spin the Lucky Wheel!</strong> Try your luck and win a discount voucher. 
-            <a href="game.html" class="fw-bold text-decoration-underline">Spin Now</a>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <!-- End of Dismissible Promotion Banner -->
-
         <!-- Main Navbar Code -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
@@ -133,7 +125,7 @@
                             <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="listing.html">List</a>
+                            <a class="btn btn-outline-light" href="#">List</a>
                         </li>
                     </ul>
                 </div>
@@ -142,106 +134,190 @@
     </div>
     <!-- End of Navbar -->
 
-    <!-- Main Section -->
-    <main>
-        <!-- Image Carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="images/image-carousel.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="images/image-carousel-1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="images/image-carousel-2.jpg" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>  
-        <!-- End of Main Image Carousel -->
-
-        <!-- Categories Section -->
-        <section class="categories-section py-6">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="mb-0">What would you like to find?</h3>
-                    <a href="#" class="btn btn-link text-decoration-none">See All <i class="bi bi-arrow-right"></i></a>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                        <div class="category-item">
-                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
-                                <i class="bi bi-person"></i>
-                            </div>
-                            <p class="mt-2">Clothes</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                        <div class="category-item">
-                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
-                                <i class="bi bi-bag"></i>
-                            </div>
-                            <p class="mt-2">Shoes</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                        <div class="category-item">
-                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
-                                <i class="bi bi-gem"></i>
-                            </div>
-                            <p class="mt-2">Jewellery</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                        <div class="category-item">
-                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
-                                <i class="bi bi-laptop"></i>
-                            </div>
-                            <p class="mt-2">Electronics</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                        <div class="category-item">
-                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
-                                <i class="bi bi-watch"></i>
-                            </div>
-                            <p class="mt-2">Watches</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                        <div class="category-item">
-                            <div class="category-icon bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center">
-                                <i class="bi bi-box"></i>
-                            </div>
-                            <p class="mt-2">Toys</p>
-                        </div>
+    <!--Main Accordian FAQ Section-->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">MokeSell GENERAL FAQs</h2>
+        <div class="accordion mt-3" id="faqAccordion">
+    
+            <!-- Question 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                        How does MokeSell's C2C platform work?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        MokeSell allows individuals to list products for sale, negotiate with buyers, and complete transactions seamlessly. We provide secure payment options and a rating system for trust.
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End of Categories Section -->
-
-        <!-- Featured Products Section -->
-        <section class="container my-5">
-            <h1 class="text-center mb-4">Product Listings</h1>
-            <div id="product-list" class="row">
-                <!-- Product list will be populated here -->
+    
+            <!-- Question 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                        Is there a fee for selling on MokeSell?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Listing products is free! However, MokeSell charges a small transaction fee when a sale is successfully completed to cover platform maintenance and secure payments.
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+    
+            <!-- Question 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                        How do I ensure a secure transaction?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Always use MokeSell’s integrated payment system for protection against fraud. Avoid direct payments outside the platform and check seller ratings before purchasing.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                        What happens if I receive a faulty product?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        MokeSell provides a dispute resolution feature where buyers can report issues within 48 hours. If the seller is found at fault, a refund may be issued.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                        How does MokeSell handle shipping?
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sellers can either provide their own shipping or use MokeSell’s integrated shipping partners for discounted rates and tracking.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                        Can I sell digital products on MokeSell?
+                    </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! MokeSell supports digital products like eBooks, courses, and software licenses. Digital files are securely delivered to buyers after payment.
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- SELLER GUIDELINES FAQ -->
+    <section class="container my-5">
+        <h3 class="fw-bold text-uppercase">SELLER GUIDELINES FAQ</h3>
+        <div class="accordion mt-3" id="faqSeller">
+
+            <!-- Question 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller1" aria-expanded="false" aria-controls="seller1">
+                        What are the best practices for listing products?
+                    </button>
+                </h2>
+                <div id="seller1" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        Ensure your product descriptions are detailed, include high-quality images, and set a competitive price. Use relevant keywords to improve visibility.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller2" aria-expanded="false" aria-controls="seller2">
+                        How do I handle returns and refunds?
+                    </button>
+                </h2>
+                <div id="seller2" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        Sellers should clearly state their return policy in their listings. If an item is faulty, MokeSell may mediate disputes and offer buyer protection.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller3" aria-expanded="false" aria-controls="seller3">
+                        What are the prohibited items on MokeSell?
+                    </button>
+                </h2>
+                <div id="seller3" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        Sellers are not allowed to list illegal items, counterfeit products, weapons, hazardous materials, or any items that violate intellectual property rights. Please review MokeSell's prohibited items policy before listing.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller4" aria-expanded="false" aria-controls="seller4">
+                        How do I get paid for my sales?
+                    </button>
+                </h2>
+                <div id="seller4" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        MokeSell processes payments securely. Sellers receive payouts via PayPal, bank transfer, or other available payment methods after the buyer confirms receipt of the item.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller5" aria-expanded="false" aria-controls="seller5">
+                        What should I do if a buyer does not complete the payment?
+                    </button>
+                </h2>
+                <div id="seller5" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        If a buyer fails to complete the payment, you can relist the item. MokeSell also allows sellers to report non-paying buyers to help maintain platform integrity.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller6" aria-expanded="false" aria-controls="seller6">
+                        How can I increase my sales on MokeSell?
+                    </button>
+                </h2>
+                <div id="seller6" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        To maximize sales, ensure your listings have clear descriptions, high-quality images, competitive pricing, and fast response times. Engaging with customers and offering discounts can also boost your visibility.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End of Main Accordian FAQ Section -->    
 
     <!-- DuckDuckGo Simple Chatbot -->
     <aside id="chat-container" class="position-fixed bottom-0 end-0 p-3 chat-container">
@@ -268,30 +344,6 @@
     </aside>
     <!-- End of DuckDuckGo Simple Chatbot -->
 
-    <!-- Newsletter Signup -->
-    <section class="newsletter bg-light py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <!-- Section Title -->
-                    <h3 class="text-uppercase fw-bold mb-4">Sign Up for Our Newsletter</h3>
-                    <!-- Form -->
-                    <form id="newsletterForm" class="row g-3">
-                        <div class="col-12">
-                            <input type="email" id="newsletterEmail" class="form-control form-control-lg" placeholder="Your Email Address" required>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-lg w-100 text-uppercase fw-bold">Sign Up</button>
-                        </div>
-                    </form>
-                    <!-- Success/Error Message -->
-                    <p id="newsletterMessage" class="mt-3"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End of Newsletter -->
-   
     <!-- Footer -->
     <footer id="footer" class="mt-5">
         <div class="container">
@@ -399,7 +451,7 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer -->    
+    <!-- End of Footer -->  
 
     <!-- Bootstrap JS  & Popper.js linked via jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
