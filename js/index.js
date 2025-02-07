@@ -99,60 +99,70 @@ async function checkCurrentUser() {
   
   // Fetching from RESTDB products collection
   document.addEventListener("DOMContentLoaded", async function () {
-    const API_URL = "http://localhost:5000/rest/products"; // Proxy to RestDB
-    const productContainer = document.getElementById("productContainer");
+
+    // Your REST API endpoint for retrieving the data from RestDB (replace with your actual API URL)
+    const apiEndpoint = 'https://mokesell-6d16.restdb.io/rest/products'; // Replace with your endpoint
   
-    try {
-      const response = await fetch(API_URL, { method: "GET", credentials: "include" });
-      if (!response.ok) throw new Error("Failed to fetch products.");
+    // Function to fetch product data
+    async function fetchProducts() {
+      try {
+        // Making a GET request to the REST API
+        const response = await fetch(apiEndpoint, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': '678a2a8729bb6d839ec56bd4', // Replace with your actual API key
+          },
+        });
   
-      const products = await response.json();
-      if (products.length === 0) {
-        productContainer.innerHTML = `<p class="text-center text-muted">No products available.</p>`;
-        return;
-      }
-  
-      let productHTML = "";
-      for (const product of products) {
-        // Default placeholder
-        let imageUrl = "images/placeholder.jpg";
-  
-        // If `product.image_url` is a real web link, use it
-        if (product.image_url) {
-          imageUrl = product.image_url;
+        // Checking if the request was successful
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
   
-        const sellerName =
-          product.seller && product.seller.length > 0 && product.seller[0].username
-            ? product.seller[0].username
-            : "Unknown Seller";
+        // Parse the JSON response
+        const data = await response.json();
+        
+        // Call the function to display products
+        displayProducts(data);
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    }
   
-        productHTML += `
-          <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-header bg-light">
-                <h6 class="m-0">${sellerName}</h6>
-              </div>
-              <img src="${imageUrl}" class="card-img-top product-img" 
-                   alt="${product.name}"
-                   onerror="this.onerror=null; this.src='images/placeholder.jpg';">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${product.name}</h5>
-                <p class="fw-bold">$${product.price.toFixed(2)}</p>
-                <p class="text-muted">${product.condition[0]}</p>
-                <a href="#" class="btn btn-primary mt-auto">View Product</a>
-              </div>
+    // Function to display products on the page
+    function displayProducts(products) {
+      const productList = document.getElementById('product-list');
+      
+      // Loop through the products and display them
+      products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('col-md-4');  // Bootstrap grid column size
+  
+        // Add the product content inside a card for each product
+        productDiv.innerHTML = `
+          <div class="product card">
+            <img src="${product.imageUrl}" class="card-img-top" alt="${product.title}">
+            <div class="card-body">
+              <h5 class="card-title">${product.title}</h5>
+              <p class="card-text"><strong>Price: $${product.price}</strong></p>
+              <p class="card-text">${product.condition}</p>
+              <p class="card-text">${product.category}</p>
+              <p class="card-text">Description: ${product.description}</p>
+              <p class="card-text">Seller: ${product.seller}</p>
             </div>
           </div>
         `;
-      }
   
-      productContainer.innerHTML = productHTML;
-    } catch (error) {
-      console.error("Error loading products:", error);
-      productContainer.innerHTML = `<p class="text-center text-danger">Error loading products. Please try again.</p>`;
+        productList.appendChild(productDiv);
+      });
     }
+  
+    // Fetch products when the page loads
+    fetchProducts();
+  
   });
+  
 
   // MailJet newsletter API signing up 
   document.addEventListener("DOMContentLoaded", function () {
