@@ -149,4 +149,43 @@ line-height: 13px;
 
 .toggle-password:hover {
     color: #000;
+=======
+/* Customise the Add to Cart and Buy Now buttons */
+.btn-custom {
+    font-size: 1rem;
+    padding: 12px 20px;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+
+.btn-buy-now {
+    background-color: #007bff;
+    color: white;
+    border: none; /* Ensure no border for the shiny effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+.btn-buy-now:hover {
+    background-color: #8989ee; /* Light blue background on hover */
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8); /* Glowing effect with blue shadow */
+  }
+  
+.btn-add-to-cart {
+  background-color: transparent;
+  color: grey; /* Grey text color */
+  border: 2px solid grey; /* Light grey outline */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-add-to-cart:hover {
+  color: lightseagreen; /* Change text color to blue when hovered */
+  border-color: lightseagreen; /* Change border color to blue on hover */
+}
+
+/* Keeps the product card image the same size after hovering */
+.product-card:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1);
 }
