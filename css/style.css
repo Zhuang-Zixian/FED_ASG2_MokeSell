@@ -76,7 +76,7 @@ body {
   }
 
 .card-text{
-line-height: 13px;
+line-height: 17px;
 }
 
 
@@ -189,4 +189,50 @@ line-height: 13px;
 .product-card:hover{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: scale(1);
+}
+
+/* Customise Cart */
+/* Style for the cart item container */
+.cart-item {
+    display: flex;
+    justify-content: flex-start;  /* Aligns item details to the left */
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;  /* Full width for the cart item */
+}
+
+/* Style for cart item image */
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+
+/* Heading for the item title */
+.cart-item h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Styling for condition, seller, and quantity */
+.cart-item p {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+/* Style for the price container (now pushed to the far right) */
+.cart-item-price {
+    font-weight: 700;
+    text-align: right;  /* Ensures price is aligned to the right */
+    min-width: 120px;  /* Ensures price has a consistent space */
+    margin-left: auto;  /* Pushes the price container to the far right */
+}
+
+/* Style for checkout button */
+.checkout-button{
+justify-content: right;
 }
