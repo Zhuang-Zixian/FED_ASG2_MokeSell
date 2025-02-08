@@ -134,73 +134,8 @@
     </div>
     <!-- End of Navbar -->
 
-    <!-- Update Profile Section-->   
-    <section class="container mt-5 d-flex justify-content-center">
-        <div class="col-md-6">
-            <h2 class="text-center">My Profile</h2>
-            <p class="text-center">Manage and update your account information.</p>
-        
-            <form id="update-profile-form" class="row g-4">
-                <fieldset>
-    
-                    <!-- Old/current username -->
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Current Username</label>
-                        <input type="text" id="username" class="form-control" readonly>
-                    </div>
 
-                    <!-- Old/current email -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Current Email</label>
-                        <input type="email" id="email" class="form-control" readonly>
-                    </div>
-
-                    <!-- New Username -->
-                    <div class="mb-3">
-                        <label for="new-username" class="form-label">New Username</label>
-                        <input type="text" id="new-username" class="form-control">
-                    </div>
-
-                    <!-- New Email -->
-                    <div class="mb-3">
-                        <label for="new-email" class="form-label">New Email</label>
-                        <input type="email" id="new-email" class="form-control">
-                    </div>
-
-                    <!-- New Password -->
-                    <div class="mb-3">
-                        <label for="new-password" class="form-label">New Password</label>
-                        <div class="input-group">
-                            <input type="password" id="new-password" class="form-control">
-                            <span class="input-group-text">
-                                <i class="bi bi-eye-slash toggle-password" data-target="new-password"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="mb-3">
-                        <label for="confirm-password" class="form-label">Confirm Password</label>
-                        <div class="input-group">
-                            <input type="password" id="confirm-password" class="form-control">
-                            <span class="input-group-text">
-                                <i class="bi bi-eye-slash toggle-password" data-target="confirm-password"></i>
-                            </span>
-                        </div>
-                    </div>
-    
-                </fieldset>
-                
-                <!-- Save Button -->
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2 fw-bold">Save</button>
-                </div>                
-            </form>
-        </div>
-    </section>    
-    <!-- End of Update Profile Section-->    
-
-     <!-- Footer -->
+    <!-- Footer -->
     <footer id="footer" class="mt-5">
         <div class="container">
             <div class="row d-flex flex-wrap justify-content-between py-5">
@@ -307,7 +242,8 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer -->     
+    <!-- End of Footer -->  
+
 
     <!-- Bootstrap JS  & Popper.js linked via jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
@@ -321,6 +257,5 @@
     <!-- For API key and connecting to JS files -->
      <script src="js/index.js"></script>
      <script src="js/config.js"></script>
-     <script src="js/profile.js"></script>
 </body>
 </html>

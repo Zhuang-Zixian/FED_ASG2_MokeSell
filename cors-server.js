@@ -36,7 +36,10 @@ app.use(
         exposedHeaders: ["x-apikey"], // Allow API key in headers
     })
 );
-app.use(bodyParser.json());
+
+// JSON parsing is enabled
+app.use(express.json());
+// app.use(bodyParser.json()); //deprecated
 
 // Configure express-session middleware for implementing Session Cookies
 // each user gets a session cookie called (connect.sid by default)
@@ -137,6 +140,129 @@ app.get('/rest/accounts', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 });
+
+// PATCH request to update user profile in RestDB
+app.patch('/update-profile', async (req, res) => {
+    try {
+        const { username, email, newUsername, newEmail, newPassword } = req.body;
+
+        // Must provide at least one to identify the user
+        if (!username && !email) {
+            return res.status(400).json({ message: "Error: old username or old email is required." });
+        }
+
+        // 1) Look up the user in RestDB by existing username/email
+        let searchQuery = `q={"$or":[{"username":"${username}"}, {"useremail":"${email}"}]}`;
+        const searchURL = `https://mokesell-6d16.restdb.io/rest/accounts?${searchQuery}`;
+        
+        console.log("Searching for user with query:", searchQuery);
+        
+        const searchResponse = await fetch(searchURL, {
+            method: "GET",
+            headers: {
+                "x-apikey": "678a2a8729bb6d839ec56bd4",
+                "Content-Type": "application/json",
+            },
+        });
+        
+        if (!searchResponse.ok) {
+            return res.status(500).json({ message: "Error fetching user data from RestDB." });
+        }
+        
+        const users = await searchResponse.json();
+        console.log("Found users:", users);
+
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: "User not found in RestDB." });
+        }
+
+        const userRecord = users[0]; 
+        const userId = userRecord._id;
+
+        // 2) Validate new username/email uniqueness
+        let updateData = {};
+
+        if (newUsername || newEmail) {
+            // Check if the new username OR email already exist (for a different _id)
+            let checkQueryParts = [];
+            if (newUsername) checkQueryParts.push(`{"username":"${newUsername}"}`);
+            if (newEmail)    checkQueryParts.push(`{"useremail":"${newEmail}"}`);
+
+            let checkQuery = `q={"$or":[${checkQueryParts.join(",")}]}`;
+            const checkURL = `https://mokesell-6d16.restdb.io/rest/accounts?${checkQuery}`;
+            console.log("Checking if new username/email already exists:", checkQuery);
+
+            const checkResponse = await fetch(checkURL, {
+                method: "GET",
+                headers: {
+                    "x-apikey": "678a2a8729bb6d839ec56bd4",
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const existingUsers = await checkResponse.json();
+            // If found a record that is not the current user
+            if (existingUsers.length > 0 && existingUsers[0]._id !== userId) {
+                return res.status(400).json({
+                    message: "Error: New username or email is already taken."
+                });
+            }
+        }
+
+        if (newUsername) updateData.username = newUsername;
+        if (newEmail)    updateData.useremail = newEmail;
+
+        // 3) Hash the new password ONCE on the server
+        if (newPassword) {
+            // Using Node 'crypto' for hashing
+            const hashedPw = crypto.createHash('sha256')
+                                   .update(newPassword)
+                                   .digest('hex');
+            updateData.userpassword = hashedPw;
+        }
+
+        // If no fields, bail out
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({ message: "No valid fields provided for update." });
+        }
+
+        console.log("Updating user ID:", userId, "with data:", updateData);
+
+        // 4) Send the PATCH to RestDB
+        const updateResponse = await fetch(`https://mokesell-6d16.restdb.io/rest/accounts/${userId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "678a2a8729bb6d839ec56bd4",
+            },
+            body: JSON.stringify(updateData),
+        });
+
+        if (!updateResponse.ok) {
+            const errJson = await updateResponse.json();
+            return res.status(updateResponse.status).json({
+                message: "Update failed",
+                error: errJson
+            });
+        }
+
+        const updatedUser = await updateResponse.json();
+        console.log("RestDB PATCH response:", updatedUser);
+
+        // 5) Update session if there's a new username/email
+        if (req.session && req.session.user) {
+            if (newUsername) req.session.user.username = newUsername;
+            if (newEmail)    req.session.user.email = newEmail;
+        }
+
+        return res.json({ message: "Profile updated successfully!", data: updatedUser });
+
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        return res.status(500).json({ message: "Internal Server Error", error: error.message });
+    }
+});
+
 
 // /current-user end point to dynamically fetch the logged in user to display in
 // index.html or other pages on the navigation bar

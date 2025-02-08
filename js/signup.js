@@ -71,3 +71,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return hashArray.map(byte => byte.toString(16).padStart(2, "0")).join(""); // Convert to hex
     }
 });
+
+// Toggle password visibility
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".toggle-password").forEach(icon => {
+        icon.addEventListener("click", function () {
+            let targetInput = document.getElementById(this.dataset.target);
+            if (targetInput.type === "password") {
+                targetInput.type = "text";  // Show password
+                this.classList.replace("bi-eye-slash", "bi-eye"); // Change icon
+            } else {
+                targetInput.type = "password"; // Hide password
+                this.classList.replace("bi-eye", "bi-eye-slash"); // Change back
+            }
+        });
+    });
+});
