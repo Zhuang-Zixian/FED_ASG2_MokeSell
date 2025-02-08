@@ -45,13 +45,35 @@
                     <label for="email" class="form-label">Email Address</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    <div class="input-group">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="password" 
+                            placeholder="Enter your password" 
+                            required
+                        >
+                        <span class="input-group-text">
+                            <i class="bi bi-eye-slash toggle-password" data-target="password"></i>
+                        </span>
+                    </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="confirm-password" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm-password" placeholder="Re-enter your password" required>
+                    <div class="input-group">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="confirm-password" 
+                            placeholder="Re-enter your password" 
+                            required
+                        >
+                        <span class="input-group-text">
+                            <i class="bi bi-eye-slash toggle-password" data-target="confirm-password"></i>
+                        </span>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             </form>

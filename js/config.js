@@ -3,7 +3,7 @@
 // DO NOT USE FULL ACCESS API KEY! and add key inside the quotes
 
 const CONFIG = {
-   // CORS-enabled API key for Signup API Key
+   // CORS-enabled API key
    RESTDB_SIGNUP_API_KEY: '678a2a8729bb6d839ec56bd4', 
                             
    // Endpoint for the users collection (used for only signup and login)

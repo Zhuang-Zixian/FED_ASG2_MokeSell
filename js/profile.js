@@ -1,6 +1,5 @@
-// js//profile.js
-
 // js/profile.js
+
 document.addEventListener("DOMContentLoaded", async function () {
     // 1) Check if user is logged in
     let userData;

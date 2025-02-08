@@ -111,7 +111,7 @@ async function checkCurrentUser() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'x-apikey': '678a2a8729bb6d839ec56bd4', // Replace with your actual API key
+            'x-apikey': '678a2a8729bb6d839ec56bd4', // API key
           },
         });
   
