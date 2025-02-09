@@ -129,13 +129,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     const checkoutForm = document.getElementById('checkout-form');
     checkoutForm.addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent form submission
-        
-        const cardName = document.getElementById('cardName').value;
-        const cardNumber = document.getElementById('cardNumber').value;
-        const expiryDate = document.getElementById('expiryDate').value;
-        const cvv = document.getElementById('cvv').value;
-
-        // You can add actual checkout logic here (e.g., send payment details to the server)
 
         // Clear the cart after checkout
         const user = await retrieveUsername();

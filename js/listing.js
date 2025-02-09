@@ -114,11 +114,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 // Explicitly reset file input as well
                 document.getElementById('imageInput').value = '';
-            })
-            .catch((error) => {
-                console.error('Error creating listing:', error);
-                alert('Failed to create the listing. Try again.');
-            });
+            })  
     }
 });
 function previewImage() {
