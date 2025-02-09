@@ -14,12 +14,11 @@ body {
 }
 
 /* Image Carousel - General */
-.carousel-inner img {
-    height: auto; /* Let height adjust based on aspect ratio */
-    min-height: 550px; /* Cap the maximum height */
-    max-height: 700px; /* Prevents the image from becoming too big */
+.carousel-item img {
     width: 100%;
-    object-fit: cover; /* Ensure proper scaling without distortion */
+    height: auto;     
+    object-fit: cover; /* Crop edges rather than distorting */
+    display: block;   /* Ensures no small gaps below images in some browsers */
 }
 
 .carousel {
@@ -39,6 +38,36 @@ body {
         height: 200px; /* Further reduce height for very small screens */
     }
 }
+
+/* DuckDuckGo ChatBot CSS */
+/* Chat Container */
+.chat-container {
+    z-index: 1000;
+}
+
+/* Chat Button */
+.chat-button {
+    width: 60px;
+    height: 60px;
+}
+
+.chat-button i {
+    font-size: 1.5rem;
+}
+
+/* Chat Box */
+.chat-box {
+    width: 300px;
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+}
+
+.messages {
+    height: 200px;
+    overflow-y: auto;
+}
+/* End of DuckDuckGo ChatBot CSS */
 
 /* Categories Section */
 .categories-section {
@@ -75,6 +104,10 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
+.card{
+    margin-bottom: 30px;
+}
+
 .card-text{
 line-height: 17px;
 }
@@ -84,36 +117,6 @@ line-height: 17px;
 .form-container {
     max-width: 500px;
 }
-
-/* DuckDuckGo ChatBot CSS */
-/* Chat Container */
-.chat-container {
-    z-index: 1000;
-}
-
-/* Chat Button */
-.chat-button {
-    width: 60px;
-    height: 60px;
-}
-
-.chat-button i {
-    font-size: 1.5rem;
-}
-
-/* Chat Box */
-.chat-box {
-    width: 300px;
-    position: absolute;
-    bottom: 70px;
-    right: 10px;
-}
-
-.messages {
-    height: 200px;
-    overflow-y: auto;
-}
-/* End of DuckDuckGo ChatBot CSS */
 
 /* Footer CSS */
 .footer-logo {
