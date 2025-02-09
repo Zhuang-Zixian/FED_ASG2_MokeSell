@@ -72,13 +72,15 @@ body {
 /* Categories Section */
 .categories-section {
     background-color: #f8f9fa; /* Light gray background */
-    padding-top: 6rem; /* Increased from 5rem */
-    padding-bottom: 6rem; /* Increased from 5rem */
+    padding-top: 5rem; /* Increased from 5rem */
+    padding-bottom: 5rem; /* Increased from 5rem */
 }
 
 .category-item {
+    display: inline-block;
     text-align: center;
     transition: transform 0.3s ease-in-out;
+    text-decoration: none;
 }
 
 .category-item:hover {
@@ -91,6 +93,13 @@ body {
     font-size: 1.5rem;
 }
 
+.category-item p {
+    color: black;
+    text-decoration: none; /* Ensures no underlines on text */
+}
+.categories-section .container {
+    text-align: center; /* Centers the inline-block elements */
+}
 /* Featured Products Section CSS */
 /* Ensure product images display correctly */
 .card-img-top {
@@ -283,7 +292,36 @@ line-height: 17px;
     margin-left: auto;  /* Pushes the price container to the far right */
 }
 
+/* Style for checkout page */
+.product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.product-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+/* Style placeholders */
+::placeholder {
+    font-style: italic;
+    color: #888;
+}
+
+.checkout-section {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+
 /* Style for checkout button */
 .checkout-button{
 justify-content: right;
+  
 }
