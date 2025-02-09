@@ -208,7 +208,31 @@ line-height: 17px;
     margin-left: auto;  /* Pushes the price container to the far right */
 }
 
-/* Style for checkout button */
-.checkout-button{
-justify-content: right;
+/* Style for checkout page */
+.product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.product-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+/* Style placeholders */
+::placeholder {
+    font-style: italic;
+    color: #888;
+}
+
+.checkout-section {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
