@@ -105,6 +105,21 @@ The wireframe and UI design layout for MokeSell was created using **Figma**.
 
 ---
 
+## ✅ Code Compliance & Validation
+
+The **MokeSell** project follows best coding practices and has been validated for compliance using official tools:
+
+- **HTML Validation**:  
+  - ✅ The HTML code has been tested using the [W3C HTML Validator](https://validator.w3.org/) and passes without errors.
+  
+- **CSS Validation**:  
+  - ✅ The CSS code has been tested using the [W3C CSS Validator (Jigsaw)](https://jigsaw.w3.org/css-validator/) and is fully compliant.
+
+- **JavaScript Validation**:  
+  - ✅ JavaScript has been linted using [JSHint](https://jshint.com/) and contains no major issues.
+
+---
+
 ## 🙌 **Acknowledgements**
 This project incorporates resources and inspiration from various sources. We extend our gratitude to the following:
 
