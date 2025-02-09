@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Selected Category:', category);
 
     // API Endpoint for products (update to your actual API endpoint)
-    const apiEndpoint = 'https://newwtest-7912.restdb.io/rest/products'; // Replace with your API URL
+    const apiEndpoint = 'https://mokesell-6d16.restdb.io/rest/products'; // Replace with your API URL
 
     // Fetch products from the API
     async function fetchCategoryProducts() {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-apikey': '67a849144dfa0cedd831a3fc', // Replace with your API key
+                    'x-apikey': '678a2a8729bb6d839ec56bd4', // Replace with your API key
                 },
             });
 
