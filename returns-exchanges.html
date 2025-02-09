@@ -43,9 +43,8 @@
         </dotlottie-player>
     </div>
     
-     <!-- Navigation Bar -->
-     <div class="sticky-top">
- 
+    <!-- Navigation Bar -->
+    <div class="sticky-top">
         <!-- Main Navbar Code -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
@@ -57,10 +56,16 @@
                 <!-- Right-Aligned Icons (Mobile Only) -->
                 <ul class="navbar-nav d-lg-none d-flex flex-row align-items-center ms-auto">
                     <li class="nav-item mx-2">
-                        <a class="nav-link text-white" href="profile.html"><i class="bi bi-person"></i></a>
+                        <a class="nav-link text-white" href="#"><i class="bi bi-person"></i></a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link text-white" href="cart.html"><i class="bi bi-cart"></i></a>
+                        <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-white" href="#"><i class="bi bi-cart"></i></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
                     </li>
                 </ul>
 
@@ -74,20 +79,33 @@
                     <!-- Categories -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="#">Contact Us</a>
+                            <a class="nav-link text-white active" aria-current="page" href="#">Clothes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="about.html">About Us</a>
+                            <a class="nav-link text-white" href="#">Shoes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="faq.html">FAQS</a>
+                            <a class="nav-link text-white" href="#">Jewellery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Electronics</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                More
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Watches</a></li>
+                                <li><a class="dropdown-item" href="#">Figurines</a></li>
+                                <li><a class="dropdown-item" href="#">Toys</a></li>
+                            </ul>
                         </li>
                     </ul>
 
                     <!-- Icons (Desktop Only) -->
                     <ul class="navbar-nav d-none d-lg-flex align-items-center">
                         <li class="nav-item dropdown mx-3 d-flex align-items-center text-white">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="contact.html" role="button" 
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" 
                                 data-bs-toggle="dropdown" aria-expanded="false" id="userDisplay">
                                 <i class="bi bi-person me-2"></i> <span>Sign In</span> 
                             </a>
@@ -98,10 +116,16 @@
                             </ul>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link text-white" href="cart.html"><i class="bi bi-cart"></i></a>
+                            <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" href="#"><i class="bi bi-cart"></i></a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="listing.html">List</a>
+                            <a class="btn btn-outline-light" href="#">List</a>
                         </li>
                     </ul>
                 </div>
@@ -110,92 +134,119 @@
     </div>
     <!-- End of Navbar -->
 
-    <!-- Privacy Policy Content -->
-    <div class="container py-5">
-        <h1 class="text-primary text-left mb-4">Privacy Policy</h1>
+     <!-- Hero Section -->
+    <section class="bg-light text-center my-5">
+        <div class="container">
+            <h1 class="fw-bold text-primary">Returns & Exchanges</h1>
+            <p class="lead">Need to return or exchange a product? Follow our easy steps below.</p>
+        </div>
+    </section>
 
-        <p class="lead text-left">
-            At MokeSell, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website and use our services. By using our website, you agree to the collection and use of information in accordance with this policy.
-        </p>
-
-        <h2 class="mt-5 text-left">1. Information We Collect</h2>
-        <p class="text-left">
-            We collect several types of information for various purposes to provide and improve our services to you. The types of data we collect include:
-        </p>
-        <ul class="text-left">
-            <li><strong>Personal Data:</strong> While using our service, we may ask you to provide us with certain personally identifiable information, including but not limited to your name, email address, phone number, and postal address, which can be used to contact or identify you.</li>
-            <li><strong>Transaction Data:</strong> We collect details of transactions you make through our website, including payment methods, billing details, purchase history, and shipping information.</li>
-            <li><strong>Usage Data:</strong> We collect information about how you access and use our website, such as IP addresses, browser type, device type, operating system, and pages you visit. This helps us understand user behavior and improve our services.</li>
-            <li><strong>Cookies and Tracking Data:</strong> We use cookies to track your preferences and enhance your browsing experience. Cookies help us analyze web traffic and personalize content. You can manage cookie preferences through your browser settings.</li>
+    <!-- Return Policy Section -->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">Return Policy</h2>
+        <p>We want you to be completely satisfied with your purchase. If you're not happy with your order, you can request a return within <strong>14 days</strong> of receiving the item.</p>
+        <h5 class="fw-semibold mt-4">Eligibility for Returns:</h5>
+        <ul>
+            <li>Item must be unused, in original packaging, and with all included accessories.</li>
+            <li>Returns must be requested within 14 days of delivery.</li>
+            <li>Some items such as perishable goods, customized products, or digital downloads may not be eligible for returns.</li>
         </ul>
+    </section>
 
-        <h2 class="mt-5 text-left">2. How We Use Your Information</h2>
-        <p class="text-left">
-            The data we collect is used for several purposes, including:
-        </p>
-        <ul class="text-left">
-            <li><strong>To Provide and Maintain Our Service:</strong> We use your personal and transaction data to process orders, deliver products, and provide customer support.</li>
-            <li><strong>To Improve Our Services:</strong> We analyze usage data to better understand how visitors interact with our site. This helps us optimize our website’s functionality and user experience.</li>
-            <li><strong>To Communicate with You:</strong> We may use your email to send you order confirmations, shipping updates, and promotional offers if you have opted in to receive such notifications.</li>
-            <li><strong>To Personalize Your Experience:</strong> We may use the information collected to customize the content we show you based on your interests and preferences.</li>
-            <li><strong>To Prevent Fraud:</strong> Your data may be used to detect and prevent fraudulent activities, ensuring a safe and secure environment for all our users.</li>
+    <!-- How to Return Section -->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">How to Return an Item</h2>
+        <p>Follow these simple steps to process your return:</p>
+        <ol>
+            <li>Go to <strong>Your Orders</strong> in your MokeSell account.</li>
+            <li>Select the item you wish to return and click <strong>Request Return</strong>.</li>
+            <li>Choose the reason for the return and upload any supporting images (if applicable).</li>
+            <li>Print the return shipping label (if provided) and pack the item securely.</li>
+            <li>Ship the item back to the seller within the return window.</li>
+        </ol>
+    </section>
+
+    <!-- Exchange Policy Section -->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">Exchange Policy</h2>
+        <p>If you wish to exchange an item for a different size, color, or variant, please follow the return process above and place a new order for the replacement item.</p>
+        <p><strong>Note:</strong> Exchanges are subject to item availability. If the desired replacement is unavailable, a refund will be issued.</p>
+    </section>
+
+    <!-- Refund Process Section -->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">Refund Processing</h2>
+        <p>Once your return is received and inspected, refunds will be issued to the original payment method within <strong>5-7 business days</strong>.</p>
+        <h5 class="fw-semibold mt-4">Refund Methods:</h5>
+        <ul>
+            <li>Credit/Debit Card - 3-7 business days</li>
+            <li>PayPal - 1-3 business days</li>
+            <li>Bank Transfer - Up to 10 business days</li>
         </ul>
+    </section>
 
-        <h2 class="mt-5 text-left">3. How We Protect Your Information</h2>
-        <p class="text-left">
-            We are committed to ensuring that your personal information is secure. We use a variety of security measures to protect your data, including:
-        </p>
-        <ul class="text-left">
-            <li><strong>Encryption:</strong> We employ encryption technology to protect sensitive data, including payment details, during transmission over the internet.</li>
-            <li><strong>Secure Servers:</strong> Our website is hosted on secure servers, and we employ standard industry practices to safeguard your data from unauthorized access.</li>
-            <li><strong>Access Control:</strong> We limit access to personal data to authorized personnel only. All employees are trained to handle sensitive information with care and responsibility.</li>
-        </ul>
+    <!-- FAQs Section -->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">Frequently Asked Questions</h2>
+        <div class="accordion mt-3" id="faqReturns">
+            
+            <!-- Question 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                        What if I received a defective item?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqReturns">
+                    <div class="accordion-body">
+                        If you receive a defective item, please report it within 48 hours of delivery. The seller may offer a replacement or refund.
+                    </div>
+                </div>
+            </div>
 
-        <h2 class="mt-5 text-left">4. Cookies</h2>
-        <p class="text-left">
-            Our website uses cookies to enhance your experience by remembering your preferences and providing personalized content. Cookies also help us analyze traffic and understand how visitors interact with our website.
-        </p>
-        <p class="text-left">
-            You can control the use of cookies through your browser settings. You can choose to disable cookies, but please note that some features of the website may not function properly without them.
-        </p>
+            <!-- Question 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                        Who pays for return shipping?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqReturns">
+                    <div class="accordion-body">
+                        Return shipping costs depend on the reason for the return. If the item is defective or incorrect, the seller will cover the return cost. Otherwise, the buyer is responsible.
+                    </div>
+                </div>
+            </div>
 
-        <h2 class="mt-5 text-left">5. Sharing Your Information</h2>
-        <p class="text-left">
-            We do not sell, rent, or share your personal information with third parties for marketing purposes without your consent. However, we may share your information in the following circumstances:
-        </p>
-        <ul class="text-left">
-            <li><strong>Service Providers:</strong> We may share your information with trusted third-party companies that assist us in operating our website and processing transactions, such as payment processors and shipping providers.</li>
-            <li><strong>Legal Compliance:</strong> We may disclose your personal information if required to do so by law or in response to a valid legal request by public authorities, including a court or government agency.</li>
-            <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or asset sale, your personal data may be transferred as part of the transaction. We will notify you if this happens and explain your rights.</li>
-        </ul>
+        </div>
+    </section>
 
-        <h2 class="mt-5 text-left">6. Your Rights</h2>
-        <p class="text-left">
-            You have the following rights regarding your personal information:
-        </p>
-        <ul class="text-left">
-            <li><strong>Right to Access:</strong> You have the right to request access to the personal data we hold about you.</li>
-            <li><strong>Right to Rectify:</strong> You have the right to correct any inaccurate or incomplete personal data.</li>
-            <li><strong>Right to Erasure:</strong> You may request that we delete your personal data, subject to certain exceptions, such as legal obligations.</li>
-            <li><strong>Right to Object:</strong> You can object to the processing of your personal data for marketing purposes or based on legitimate interests.</li>
-        </ul>
-        <p class="text-left">
-            To exercise any of these rights, please contact us at the email provided below. We will respond to your request within the time frame required by applicable laws.
-        </p>
+    <!-- DuckDuckGo Simple Chatbot -->
+    <aside id="chat-container" class="position-fixed bottom-0 end-0 p-3 chat-container">
+        <!-- Chat Button -->
+        <button id="chat-button" class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center shadow chat-button" aria-label="Open Chat">
+            <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+        </button>
 
-        <h2 class="mt-5 text-left">7. Changes to This Privacy Policy</h2>
-        <p class="text-left">
-            We may update our Privacy Policy from time to time. Any changes will be posted on this page, and the updated policy will take effect as soon as it is published. We encourage you to review this policy periodically to stay informed about how we are protecting your information.
-        </p>
+        <!-- Chat Box -->
+        <section id="chat-box" class="card border-primary d-none chat-box" aria-hidden="true">
+            <header class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h2 class="h6 mb-0">Chat with DuckDuckGo</h2>
+                <button type="button" class="btn-close btn-close-white" aria-label="Close Chat" id="close-chat"></button>
+            </header>
+            <div class="card-body p-3 messages" id="messages" aria-live="polite"></div>
+            <footer class="card-footer">
+                <form class="input-group" role="form" aria-label="Chat Input Form">
+                    <label for="chat-input" class="visually-hidden">Type a message</label>
+                    <input type="text" id="chat-input" class="form-control" placeholder="Type a message..." aria-label="Chat Message Input" />
+                    <button id="send-btn" type="submit" class="btn btn-primary" aria-label="Send Message">Send</button>
+                </form>
+            </footer>
+        </section>
+    </aside>
+    <!-- End of DuckDuckGo Simple Chatbot -->
 
-        <h2 class="mt-5 text-left">8. Contact Us</h2>
-        <p class="text-left">
-            If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:
-            <br>
-            <a href="mailto:support@mokesell.com" class="text-primary">support@mokesell.com</a>
-        </p>
-    </div>
-    
     <!-- Footer -->
     <footer id="footer" class="mt-5">
         <div class="container">
@@ -303,7 +354,7 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer --> 
+    <!-- End of Footer -->  
 
     <!-- Bootstrap JS  & Popper.js linked via jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
@@ -315,7 +366,8 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- For API key and connecting to JS files -->
-        <script src="js/index.js"></script>
-        <script src="js/chatbot.js"></script>
+     <script src="js/index.js"></script>
+     <script src="js/config.js"></script>
+     <script src="js/chatbot.js"></script>
 </body>
 </html>

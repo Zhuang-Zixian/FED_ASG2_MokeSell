@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <!-- CSS Linking-->
      <link rel="stylesheet" href="css/style.css">
-     <link rel="stylesheet" href="css/spinwheel.css">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -25,22 +24,27 @@
     <!-- End Google Tag Manager -->
     
 </head>
-  <body>
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5HBCMZQ"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Lottie Animation Loader -->
+    <div id="loader-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player 
+            src="https://lottie.host/e012ad42-3f38-4645-be1d-c4f4b1f5fc21/Ex0KvPcBvx.lottie" 
+            background="transparent" 
+            speed="1" 
+            style="width: 300px; height: 300px" 
+            loop 
+            autoplay>
+        </dotlottie-player>
+    </div>
     
-        <!-- Lottie Animation Loader Wheel Spinning -->
-        <div id="loader-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; justify-content: center; align-items: center;">
-            <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-            <dotlottie-player src="https://lottie.host/c33d0a92-e245-4416-bc86-219f7a004ba1/g4HmUIw5Jd.json" 
-                background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
-            </dotlottie-player>
-        </div>
-        
-         <!-- Navigation Bar -->
-        <div class="sticky-top">
+    <!-- Navigation Bar -->
+    <div class="sticky-top">
  
         <!-- Main Navbar Code -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -70,7 +74,7 @@
                     <!-- Categories -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="contact.html">Contact Us</a>
+                            <a class="nav-link text-white active" aria-current="page" href="#">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="about.html">About Us</a>
@@ -83,7 +87,7 @@
                     <!-- Icons (Desktop Only) -->
                     <ul class="navbar-nav d-none d-lg-flex align-items-center">
                         <li class="nav-item dropdown mx-3 d-flex align-items-center text-white">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" 
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="contact.html" role="button" 
                                 data-bs-toggle="dropdown" aria-expanded="false" id="userDisplay">
                                 <i class="bi bi-person me-2"></i> <span>Sign In</span> 
                             </a>
@@ -106,24 +110,190 @@
     </div>
     <!-- End of Navbar -->
 
-    <!-- Spin Wheel Section -->
-    <div class="spin-wheel-wrapper">
-        <div class="spin-wheel-container">
-            <!-- Correctly positioned pointer (Right side, properly pointing at wheel) -->
-            <div class="spin-wheel-pointer"></div>
-            <canvas id="wheel"></canvas>
+    <!--Main Accordian FAQ Section-->
+    <section class="container my-5">
+        <h2 class="fw-bold text-uppercase">MokeSell GENERAL FAQs</h2>
+        <div class="accordion mt-3" id="faqAccordion">
+    
+            <!-- Question 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                        How does MokeSell's C2C platform work?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        MokeSell allows individuals to list products for sale, negotiate with buyers, and complete transactions seamlessly. We provide secure payment options and a rating system for trust.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                        Is there a fee for selling on MokeSell?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Listing products is free! However, MokeSell charges a small transaction fee when a sale is successfully completed to cover platform maintenance and secure payments.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                        How do I ensure a secure transaction?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Always use MokeSell’s integrated payment system for protection against fraud. Avoid direct payments outside the platform and check seller ratings before purchasing.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                        What happens if I receive a faulty product?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        MokeSell provides a dispute resolution feature where buyers can report issues within 48 hours. If the seller is found at fault, a refund may be issued.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                        How does MokeSell handle shipping?
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sellers can either provide their own shipping or use MokeSell's integrated shipping partners for discounted rates and tracking.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Question 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                        Can I sell digital products on MokeSell?
+                    </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! MokeSell supports digital products like eBooks, courses, and software licenses. Digital files are securely delivered to buyers after payment.
+                    </div>
+                </div>
+            </div>
+    
         </div>
+    </section>
 
-        <!-- Display Result -->
-        <div id="final-value">
-            <p>Click On The Spin Button To Start</p>
-        </div>
+    <!-- SELLER GUIDELINES FAQ -->
+    <section class="container my-5">
+        <h3 class="fw-bold text-uppercase">SELLER GUIDELINES FAQ</h3>
+        <div class="accordion mt-3" id="faqSeller">
 
-        <!-- Spin Button -->
-        <div class="spin-btn-container">
-            <button id="spin-btn">Spin</button>
+            <!-- Question 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller1" aria-expanded="false" aria-controls="seller1">
+                        What are the best practices for listing products?
+                    </button>
+                </h2>
+                <div id="seller1" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        Ensure your product descriptions are detailed, include high-quality images, and set a competitive price. Use relevant keywords to improve visibility.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller2" aria-expanded="false" aria-controls="seller2">
+                        How do I handle returns and refunds?
+                    </button>
+                </h2>
+                <div id="seller2" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        Sellers should clearly state their return policy in their listings. If an item is faulty, MokeSell may mediate disputes and offer buyer protection.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller3" aria-expanded="false" aria-controls="seller3">
+                        What are the prohibited items on MokeSell?
+                    </button>
+                </h2>
+                <div id="seller3" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        Sellers are not allowed to list illegal items, counterfeit products, weapons, hazardous materials, or any items that violate intellectual property rights. Please review MokeSell's prohibited items policy before listing.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller4" aria-expanded="false" aria-controls="seller4">
+                        How do I get paid for my sales?
+                    </button>
+                </h2>
+                <div id="seller4" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        MokeSell processes payments securely. Sellers receive payouts via PayPal, bank transfer, or other available payment methods after the buyer confirms receipt of the item.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller5" aria-expanded="false" aria-controls="seller5">
+                        What should I do if a buyer does not complete the payment?
+                    </button>
+                </h2>
+                <div id="seller5" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        If a buyer fails to complete the payment, you can relist the item. MokeSell also allows sellers to report non-paying buyers to help maintain platform integrity.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#seller6" aria-expanded="false" aria-controls="seller6">
+                        How can I increase my sales on MokeSell?
+                    </button>
+                </h2>
+                <div id="seller6" class="accordion-collapse collapse" data-bs-parent="#faqSeller">
+                    <div class="accordion-body">
+                        To maximize sales, ensure your listings have clear descriptions, high-quality images, competitive pricing, and fast response times. Engaging with customers and offering discounts can also boost your visibility.
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
+    <!-- End of Main Accordian FAQ Section -->    
 
     <!-- DuckDuckGo Simple Chatbot -->
     <aside id="chat-container" class="position-fixed bottom-0 end-0 p-3 chat-container">
@@ -257,15 +427,11 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer -->
+    <!-- End of Footer --> 
 
     <!-- Bootstrap JS  & Popper.js linked via jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <!-- Chart JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- Chart JS Plugin for displaying text over chart -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5HBCMZQ"
@@ -273,8 +439,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- For API key and connecting to JS files -->
-    <script src="js/index.js"></script>
-    <script src="js/chatbot.js"></script>
-    <script src="js/spinwheel.js"></script>
-  </body>
+     <script src="js/index.js"></script>
+     <script src="js/chatbot.js"></script>
+</body>
 </html>

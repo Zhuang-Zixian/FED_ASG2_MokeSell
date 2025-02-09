@@ -14,12 +14,11 @@ body {
 }
 
 /* Image Carousel - General */
-.carousel-inner img {
-    height: auto; /* Let height adjust based on aspect ratio */
-    min-height: 550px; /* Cap the maximum height */
-    max-height: 700px; /* Prevents the image from becoming too big */
+.carousel-item img {
     width: 100%;
-    object-fit: cover; /* Ensure proper scaling without distortion */
+    height: auto;     
+    object-fit: cover; /* Crop edges rather than distorting */
+    display: block;   /* Ensures no small gaps below images in some browsers */
 }
 
 .carousel {
@@ -39,6 +38,36 @@ body {
         height: 200px; /* Further reduce height for very small screens */
     }
 }
+
+/* DuckDuckGo ChatBot CSS */
+/* Chat Container */
+.chat-container {
+    z-index: 1000;
+}
+
+/* Chat Button */
+.chat-button {
+    width: 60px;
+    height: 60px;
+}
+
+.chat-button i {
+    font-size: 1.5rem;
+}
+
+/* Chat Box */
+.chat-box {
+    width: 300px;
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+}
+
+.messages {
+    height: 200px;
+    overflow-y: auto;
+}
+/* End of DuckDuckGo ChatBot CSS */
 
 /* Categories Section */
 .categories-section {
@@ -84,6 +113,10 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
+.card{
+    margin-bottom: 30px;
+}
+
 .card-text{
 line-height: 17px;
 }
@@ -93,36 +126,6 @@ line-height: 17px;
 .form-container {
     max-width: 500px;
 }
-
-/* DuckDuckGo ChatBot CSS */
-/* Chat Container */
-.chat-container {
-    z-index: 1000;
-}
-
-/* Chat Button */
-.chat-button {
-    width: 60px;
-    height: 60px;
-}
-
-.chat-button i {
-    font-size: 1.5rem;
-}
-
-/* Chat Box */
-.chat-box {
-    width: 300px;
-    position: absolute;
-    bottom: 70px;
-    right: 10px;
-}
-
-.messages {
-    height: 200px;
-    overflow-y: auto;
-}
-/* End of DuckDuckGo ChatBot CSS */
 
 /* Footer CSS */
 .footer-logo {
@@ -134,6 +137,30 @@ line-height: 17px;
     background-color: #007bff; /* Change to your desired color */
     color: white; /* Change text color */
     border-color: #007bff; /* Change border color */
+}
+
+/* Eye of Rah Icon */
+.input-group {
+    position: relative;
+}
+
+.input-group-text {
+    cursor: pointer;
+    background: white;
+    border-left: none;
+}
+
+.input-group .form-control {
+    border-right: none;
+}
+
+.toggle-password {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.toggle-password:hover {
+    color: #000;
 }
 
 /* Customise the Add to Cart and Buy Now buttons */
@@ -174,6 +201,54 @@ line-height: 17px;
 .product-card:hover{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: scale(1);
+}
+
+/* Contact Page Styling */
+.contact-section {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 10px;
+}
+.modal-header {
+    border-bottom: none;
+}
+
+/* Contact Page Map Styling */
+.map-container {
+    width: 100%;
+    height: 450px;
+    margin-bottom: 2rem;
+    border-radius: 0; /* Remove border radius for full width */
+    overflow: hidden;
+    box-shadow: none; /* Remove shadow if needed */
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* Customise Cart */
@@ -244,4 +319,9 @@ line-height: 17px;
     padding: 10px;
     border-radius: 8px;
     background-color: #f9f9f9;
+
+/* Style for checkout button */
+.checkout-button{
+justify-content: right;
+  
 }

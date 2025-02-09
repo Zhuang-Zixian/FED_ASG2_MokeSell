@@ -45,6 +45,7 @@
     
     <!-- Navigation Bar -->
     <div class="sticky-top">
+ 
         <!-- Main Navbar Code -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
@@ -56,16 +57,10 @@
                 <!-- Right-Aligned Icons (Mobile Only) -->
                 <ul class="navbar-nav d-lg-none d-flex flex-row align-items-center ms-auto">
                     <li class="nav-item mx-2">
-                        <a class="nav-link text-white" href="#"><i class="bi bi-person"></i></a>
+                        <a class="nav-link text-white" href="profile.html"><i class="bi bi-person"></i></a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-white" href="#"><i class="bi bi-cart"></i></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
+                        <a class="nav-link text-white" href="cart.html"><i class="bi bi-cart"></i></a>
                     </li>
                 </ul>
 
@@ -79,33 +74,20 @@
                     <!-- Categories -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="#">Clothes</a>
+                            <a class="nav-link text-white active" aria-current="page" href="#">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Shoes</a>
+                            <a class="nav-link text-white" href="about.html">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Jewellery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Electronics</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                More
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Watches</a></li>
-                                <li><a class="dropdown-item" href="#">Figurines</a></li>
-                                <li><a class="dropdown-item" href="#">Toys</a></li>
-                            </ul>
+                            <a class="nav-link text-white" href="faq.html">FAQS</a>
                         </li>
                     </ul>
 
                     <!-- Icons (Desktop Only) -->
                     <ul class="navbar-nav d-none d-lg-flex align-items-center">
                         <li class="nav-item dropdown mx-3 d-flex align-items-center text-white">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" 
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="contact.html" role="button" 
                                 data-bs-toggle="dropdown" aria-expanded="false" id="userDisplay">
                                 <i class="bi bi-person me-2"></i> <span>Sign In</span> 
                             </a>
@@ -116,16 +98,10 @@
                             </ul>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link text-white" href="#"><i class="bi bi-heart"></i></a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link text-white" href="#"><i class="bi bi-cart"></i></a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link text-white" href="#"><i class="bi bi-chat"></i></a>
+                            <a class="nav-link text-white" href="cart.html"><i class="bi bi-cart"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="#">List</a>
+                            <a class="btn btn-outline-light" href="listing.html">List</a>
                         </li>
                     </ul>
                 </div>
@@ -134,60 +110,74 @@
     </div>
     <!-- End of Navbar -->
 
-    <!-- Profile Update Section -->
-    <section class="container mt-5">
-        <h2>My Profile</h2>
-        <p>Manage and update your account information.</p>
+    <!-- Update Profile Section-->   
+    <section class="container mt-5 d-flex justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">My Profile</h2>
+            <p class="text-center">Manage and update your account information.</p>
+        
+            <form id="update-profile-form" class="row g-4">
+                <fieldset>
     
-        <form id="update-profile-form" class="row g-4">
-            <fieldset class="col-md-8">
-                <legend>Account Details</legend>
-    
-                <!-- Username -->
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" class="form-control" required>
-                </div>
-    
-                <!-- Email -->
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-    
-                <!-- New Password -->
-                <div class="mb-3">
-                    <label for="new-password" class="form-label">New Password</label>
-                    <input type="password" id="new-password" class="form-control" required>
-                </div>
-    
-                <!-- Confirm Password -->
-                <div class="mb-3">
-                    <label for="confirm-password" class="form-label">Confirm Password</label>
-                    <input type="password" id="confirm-password" class="form-control" required>
-                </div>
-            </fieldset>
-    
-            <!-- Profile Picture Section -->
-            <aside class="col-md-4 text-center">
-                <figure>
-                    <img id="profile-picture" src="images/placeholder-profile.jpg" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
-                    <figcaption class="small text-muted">Max size: 1MB | Formats: JPEG, PNG</figcaption>
-                </figure>
-                <label for="profile-pic-upload" class="btn btn-outline-primary mt-2">Upload Picture</label>
-                <input type="file" id="profile-pic-upload" class="d-none" accept="image/jpeg, image/png">
-            </aside>
-    
-            <!-- Submit Button -->
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
-    </section>    
-    <!-- End Profile Update Section -->
+                    <!-- Old/current username -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Current Username</label>
+                        <input type="text" id="username" class="form-control" readonly>
+                    </div>
 
-     <!-- Footer -->
-     <footer id="footer" class="mt-5">
+                    <!-- Old/current email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Current Email</label>
+                        <input type="email" id="email" class="form-control" readonly>
+                    </div>
+
+                    <!-- New Username -->
+                    <div class="mb-3">
+                        <label for="new-username" class="form-label">New Username</label>
+                        <input type="text" id="new-username" class="form-control">
+                    </div>
+
+                    <!-- New Email -->
+                    <div class="mb-3">
+                        <label for="new-email" class="form-label">New Email</label>
+                        <input type="email" id="new-email" class="form-control">
+                    </div>
+
+                    <!-- New Password -->
+                    <div class="mb-3">
+                        <label for="new-password" class="form-label">New Password</label>
+                        <div class="input-group">
+                            <input type="password" id="new-password" class="form-control">
+                            <span class="input-group-text">
+                                <i class="bi bi-eye-slash toggle-password" data-target="new-password"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <input type="password" id="confirm-password" class="form-control">
+                            <span class="input-group-text">
+                                <i class="bi bi-eye-slash toggle-password" data-target="confirm-password"></i>
+                            </span>
+                        </div>
+                    </div>
+    
+                </fieldset>
+                
+                <!-- Save Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2 fw-bold">Save</button>
+                </div>                
+            </form>
+        </div>
+    </section>    
+    <!-- End of Update Profile Section-->    
+
+    <!-- Footer -->
+    <footer id="footer" class="mt-5">
         <div class="container">
             <div class="row d-flex flex-wrap justify-content-between py-5">
                 <div class="col-md-3 col-sm-6">
@@ -229,16 +219,13 @@
                         <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
                         <ul class="menu-list list-unstyled text-uppercase fs-6">
                             <li class="menu-item">
-                                <a href="index.html" class="item-anchor">Home</a>
-                            </li>
-                            <li class="menu-item">
                                 <a href="about.html" class="item-anchor">About Us</a>
                             </li>
                             <li class="menu-item">
-                                <a href="categories.html" class="item-anchor">Categories</a>
+                                <a href="category.html" class="item-anchor">Categories</a>
                             </li>
                             <li class="menu-item">
-                                <a href="shop.html" class="item-anchor">Shop</a>
+                                <a href="index.html" class="item-anchor">Shop</a>
                             </li>
                             <li class="menu-item">
                                 <a href="contact.html" class="item-anchor">Contact</a>
@@ -251,19 +238,16 @@
                         <h5 class="widget-title text-uppercase mb-4">Help & Info</h5>
                         <ul class="menu-list list-unstyled text-uppercase fs-6">
                             <li class="menu-item">
-                                <a href="#" class="item-anchor">Track Your Order</a>
+                                <a href="https://www.dhl.com/sg-en/home/tracking.html" class="item-anchor" target="_blank">Track Your Order</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="item-anchor">Returns + Exchanges</a>
+                                <a href="returns-exchanges.html" class="item-anchor">Returns + Exchanges</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="item-anchor">Shipping + Delivery</a>
+                                <a href="https://www.dhl.com/discover/en-sg/ship-with-dhl/general-queries" class="item-anchor" target="_blank">Shipping + Delivery</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="item-anchor">FAQs</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Customer Support</a>
+                                <a href="faq.html" class="item-anchor">FAQs</a>
                             </li>
                         </ul>
                     </div>
@@ -272,7 +256,7 @@
                     <div class="footer-menu footer-menu-004">
                         <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
                         <p>Have questions or need help? <a href="mailto:support@mokesell.com" class="item-anchor">support@mokesell.com</a></p>
-                        <p>Call us: <a href="tel:+1234567890" class="item-anchor">+65 6460 6999</a></p>
+                        <p>Call us: <a href="tel:+65 6460 6999" class="item-anchor">+65 6460 6999</a></p>
                     </div>
                 </div>
             </div>
@@ -299,7 +283,7 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer -->    
+    <!-- End of Footer -->     
 
     <!-- Bootstrap JS  & Popper.js linked via jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
@@ -312,6 +296,6 @@
 
     <!-- For API key and connecting to JS files -->
      <script src="js/index.js"></script>
-     <script src="js/config.js"></script>
+     <script src="js/profile.js"></script>
 </body>
 </html>
